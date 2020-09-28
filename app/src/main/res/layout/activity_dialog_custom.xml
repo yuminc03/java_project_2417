@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout tools:context=".DialogCustom"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:background="#83FFF3"
+        android:text="@string/my_meetings"
+        android:textSize="30dp"
+        android:textColor="#0072FF"
+        android:gravity="center"
+        android:id="@+id/title"/>
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+    <TextView
+        android:layout_height="51dp"
+        android:layout_width="124dp"
+        android:background="#FFFFFF"
+        android:text="@string/make_meetings"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/room_name"/>
+
+    <EditText
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/input_room"
+        android:hint="@string/input1"/>
+
+    <TextView
+        android:layout_height="51dp"
+        android:layout_width="124dp"
+        android:background="#FFFFFF"
+        android:text="@string/time"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/room_time"/>
+
+    <EditText
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/input_time"
+        android:hint="@string/input2"/>
+
+    <TextView
+        android:layout_height="51dp"
+        android:layout_width="124dp"
+        android:background="#FFFFFF"
+        android:text="@string/place"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/room_place"/>
+
+    <EditText
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:id="@+id/input_place"
+        android:hint="@string/input3"/>
+
+</LinearLayout>

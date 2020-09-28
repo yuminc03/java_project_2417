@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RegisterLoginExample</string>
+    <string name="open_menu">메뉴 열기</string>
+    <string name="my_meetings">나의 모임</string>
+    <string name="make_meetings">모임 만들기</string>
+    <string name="input1">입력하세요</string>
+    <string name="time">시간</string>
+    <string name="input2">입력하세요</string>
+    <string name="input3">입력하세요</string>
+    <string name="place">장소</string>
+    <string name="close">닫기</string>
+    <string name="make_room">방 만들기</string>
+    <string name="find_room">방 찾기</string>
+    <string name="making">+</string>
+    <string name="making2">+</string>
+    <string name="sign_out">로그아웃</string>
+    <string name="input_code">코드를 입력해 주세요</string>
+</resources>
