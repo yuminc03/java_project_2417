@@ -9,7 +9,7 @@ tools:context="kr.hs.emirim.flowerbeen.byeruss.MainActivity">
 <TextView
     android:id="@+id/textView5"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
     android:layout_marginTop="100dp"
     android:text="Hello World!"
     android:textSize="30sp"
