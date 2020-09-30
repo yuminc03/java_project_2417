@@ -12,10 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MeetingListActivity"></activity>
-        <activity android:name=".FindRoomActivity" />
-        <activity android:name=".DrawerActivity" />
-        <activity android:name=".DialogCustom" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
