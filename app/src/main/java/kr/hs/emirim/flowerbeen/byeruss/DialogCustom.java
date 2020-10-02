@@ -50,7 +50,7 @@ public class DialogCustom extends AppCompatDialogFragment {
         return builder.create();
     }
     public interface ExampleDialogListener{
-
+        void applyTexts(String roomname, String meettime, String meetplece);
     }
 
     @Override

@@ -22,11 +22,6 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MeetingListActivity"/>
-        <activity android:name=".DialogCustom"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".FindRoomActivity"
-            tools:ignore="Instantiatable" />
         <activity android:name=".DrawerActivity" />
     </application>
 
