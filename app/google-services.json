@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "369653713164",
+    "firebase_url": "https://registerloginexample-3ae17.firebaseio.com",
+    "project_id": "registerloginexample-3ae17",
+    "storage_bucket": "registerloginexample-3ae17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369653713164:android:52bb87bde51843c1f72129",
+        "android_client_info": {
+          "package_name": "kr.hs.emirim.flowerbeen.byeruss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369653713164-h8qbcm5s4esi6s50d9ajjc56voogkhce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.hs.emirim.flowerbeen.byeruss",
+            "certificate_hash": "a64a37619bedeaa58facda0d31fef3cf10932247"
+          }
+        },
+        {
+          "client_id": "369653713164-sefm2omgr0fcdksj2ct70blcdpevkg0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtLd6my0Q4aS9nrOSmK8J_yEA4kECzGao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369653713164-sefm2omgr0fcdksj2ct70blcdpevkg0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
