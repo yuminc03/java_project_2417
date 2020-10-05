@@ -18,6 +18,9 @@ public class DialogCustom extends AppCompatDialogFragment {
     private Context context;
     private EditText input_room, input_time, input_place;
     private ExampleDialogListener listener;
+    private int room_code_int;
+    private final String code1 = "111111111";
+    private String room_code, Room_code;
 
     @NonNull
     @Override
@@ -38,6 +41,11 @@ public class DialogCustom extends AppCompatDialogFragment {
                 .setPositiveButton("생성", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        room_code_int = (int)(Math.random()*1000000000);
+                        room_code = Integer.toString(room_code_int);
+                        if(room_code != code1){
+                            Room_code = room_code;
+                        }
                         String roomName = input_room.getText().toString();
                         String meetTime = input_time.getText().toString();
                         String meetPlace = input_place.getText().toString();
