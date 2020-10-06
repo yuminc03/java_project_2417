@@ -5,22 +5,24 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DialogCustom extends AppCompatDialogFragment {
+
     private Context context;
     private EditText input_room, input_time, input_place;
-    private ExampleDialogListener listener;
     private int room_code_int;
-    private final String code1 = "111111111";
-    private String room_code, Room_code;
+    private String room_code, roomCode;
+    private String roomName, roomTime, roomPlace;
 
     @NonNull
     @Override
@@ -41,30 +43,22 @@ public class DialogCustom extends AppCompatDialogFragment {
                 .setPositiveButton("생성", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        room_code_int = (int)(Math.random()*1000000000);
+                        room_code_int = (int) (Math.random() * 1000000000);
                         room_code = Integer.toString(room_code_int);
-                        if(room_code != code1){
-                            Room_code = room_code;
-                        }
-                        String roomName = input_room.getText().toString();
-                        String meetTime = input_time.getText().toString();
-                        String meetPlace = input_place.getText().toString();
+
+                        roomCode = room_code;
+
+                        roomName = input_room.getText().toString();
+                        roomTime = input_time.getText().toString();
+                        roomPlace = input_place.getText().toString();
                     }
                 });
-        input_room = view.findViewById(R.id.input_room);
-        input_time = view.findViewById(R.id.input_time);
-        input_place = view.findViewById(R.id.input_place);
-
         return builder.create();
-    }
-    public interface ExampleDialogListener{
-        void applyTexts(String roomname, String meettime, String meetplece);
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        //listener = (ExampleDialogListener)
     }
 }

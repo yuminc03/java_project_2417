@@ -22,14 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private View drawerView;
     private Button btn_find, btn_make;
     private Context context;
-    private EditText input_room, input_time, input_place;
+    EditText input_room;
+    EditText input_time;
+    EditText input_place;
     private Button okButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.drawer);
@@ -91,17 +92,14 @@ public class MainActivity extends AppCompatActivity {
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
         }
-
         @Override
         public void onDrawerOpened(@NonNull View drawerView) {
 
         }
-
         @Override
         public void onDrawerClosed(@NonNull View drawerView) {
 
         }
-
         @Override
         public void onDrawerStateChanged(int newState) {
 
