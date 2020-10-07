@@ -13,8 +13,6 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <include layout="@layout/activity_drawer" />

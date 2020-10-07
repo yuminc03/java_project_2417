@@ -1,82 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout
-    tools:context=".DialogCustom"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:layout_height="60dp"
+        android:id="@+id/title"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:background="#83FFF3"
-        android:text="@string/my_meetings"
-        android:textSize="30dp"
-        android:textColor="#0072FF"
         android:gravity="center"
-        android:id="@+id/title"/>
+        android:text="@string/my_meetings"
+        android:textColor="#0072FF"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#000000"/>
 
     <TextView
-        android:layout_height="51dp"
+        android:id="@+id/room_name"
         android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="12dp"
         android:background="#FFFFFF"
+        android:gravity="left"
         android:text="@string/make_meetings"
-        android:textSize="24sp"
         android:textColor="#000000"
-        android:gravity="left"
-        android:id="@+id/room_name"/>
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
-        android:layout_height="60dp"
-        android:layout_width="match_parent"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:gravity="left"
         android:id="@+id/input_room"
-        android:hint="@string/input1"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="72dp"
+        android:gravity="left"
+        android:hint="@string/input1"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:layout_height="51dp"
+        android:id="@+id/room_time"
         android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
         android:background="#FFFFFF"
+        android:gravity="left"
         android:text="@string/time"
-        android:textSize="24sp"
         android:textColor="#000000"
-        android:gravity="left"
-        android:id="@+id/room_time"/>
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_room" />
 
     <EditText
-        android:layout_height="60dp"
-        android:layout_width="match_parent"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:gravity="left"
         android:id="@+id/input_time"
-        android:hint="@string/input2"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:gravity="left"
+        android:hint="@string/input2"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_room" />
 
     <TextView
-        android:layout_height="51dp"
+        android:id="@+id/room_place"
         android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
-        android:text="@string/place"
-        android:textSize="24sp"
-        android:textColor="#000000"
         android:gravity="left"
-        android:id="@+id/room_place"/>
+        android:text="@string/place"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_time" />
 
     <EditText
-        android:layout_height="60dp"
-        android:layout_width="match_parent"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        android:gravity="left"
         android:id="@+id/input_place"
-        android:hint="@string/input3"/>
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:gravity="left"
+        android:hint="@string/input3"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_time" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="107dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:background="#76FFD4"
+        android:text="확인"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_place" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="92dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:background="#979797"
+        android:text="취소"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_place" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
