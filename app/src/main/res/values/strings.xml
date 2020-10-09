@@ -16,4 +16,5 @@
     <string name="sign_out">로그아웃</string>
     <string name="input_code">코드를 입력해 주세요</string>
     <string name="bye_russ">Bye-russ</string>
+    <string name="input_room_id">방의 아이디를 입력하세요</string>
 </resources>

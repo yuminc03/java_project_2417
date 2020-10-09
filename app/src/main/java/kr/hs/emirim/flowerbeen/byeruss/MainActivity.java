@@ -3,13 +3,12 @@ package kr.hs.emirim.flowerbeen.byeruss;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,16 +16,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    private static String IP_ADDRESS = "175.209.132.195";
-    private static String TAG = "phptest";
 
     private DrawerLayout drawerLayout;
     private View drawerView;
     private Button btn_find, btn_make;
     private Context context;
+
+    SQLiteDatabase database;
+    private final String dbName = "byeruss_room.db";
+    //private final String tableName = "byeruss_make_room";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_dialog_custom, null);
         builder.setView(view);
+        final EditText input_id = (EditText) view.findViewById(R.id.input_id);
         final EditText input_room = (EditText) view.findViewById(R.id.input_room);
         final EditText input_time = (EditText) view.findViewById(R.id.input_time);
         final EditText input_place = (EditText) view.findViewById(R.id.input_place);
@@ -86,14 +90,17 @@ public class MainActivity extends AppCompatActivity {
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                int room_code_int = (int)(Math.random() * 1000000000);
-                String room_code = Integer.toString(room_code_int);
-
-                String roomCode = room_code;
+                String roomId = input_id.getText().toString();
                 String roomName = input_room.getText().toString();
                 String roomTime = input_time.getText().toString();
                 String roomPlace = input_place.getText().toString();
+
+                try{
+                    openDatabase(dbName);
+                    insertData(roomId, roomName, roomTime, roomPlace);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 dialog.dismiss();//종료
             }
@@ -107,6 +114,32 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
+    public void openDatabase(String databaseName){
+        Toast.makeText(getApplicationContext(), "DB가 호출되었습니다!", Toast.LENGTH_SHORT).show();
+
+        //DB 저장소 만듦
+        database = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
+
+        //DB가 제대로 생성되었는지 확인
+        if(database != null){
+            Toast.makeText(getApplicationContext(), "DB가 오픈되었습니다!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void insertData(String roomId, String roomName, String roomTime, String roomPlace){
+        Toast.makeText(getApplicationContext(), "데이터를 넣을 준비 완료!", Toast.LENGTH_SHORT).show();
+        if(database != null){
+            String sql = "insert into byeruss_make_room(roomId, roomName, roomTime, roomPlace) values(?,?,?,?)";
+            Object[] params = {roomId, roomName, roomTime, roomPlace};
+
+            database.execSQL(sql, params);
+
+            Toast.makeText(getApplicationContext(), "DB가 오픈되었습니다!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "DB를 열어야 합니다...", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     void show_froom(){
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
