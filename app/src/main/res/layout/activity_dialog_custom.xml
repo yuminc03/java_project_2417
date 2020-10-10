@@ -164,27 +164,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_place" />
 
-    <Button
-        android:id="@+id/btn_overlap"
-        android:layout_width="91dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="20dp"
-        android:background="#36CFEA"
-        android:text="중복확인"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toEndOf="@+id/room_id"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/check_overlap"
-        android:layout_width="119dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

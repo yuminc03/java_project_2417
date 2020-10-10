@@ -1,12 +1,14 @@
 package kr.hs.emirim.flowerbeen.byeruss;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,7 +18,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private View drawerView;
     private Button btn_find, btn_make;
     private Context context;
+    private ContentValues cv = null;
 
-    SQLiteDatabase database;
+    private SQLiteDatabase database;
     private final String dbName = "byeruss_room.db";
     //private final String tableName = "byeruss_make_room";
 
@@ -36,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        drawerView = (View)findViewById(R.id.drawer);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerView = (View) findViewById(R.id.drawer);
 
-        btn_find = (Button)findViewById(R.id.btn_find);//방 찾기
-        btn_make = (Button)findViewById(R.id.btn_make);//방 만들기
+        btn_find = (Button) findViewById(R.id.btn_find);//방 찾기
+        btn_make = (Button) findViewById(R.id.btn_make);//방 만들기
 
 
         btn_make.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_close = (Button)findViewById(R.id.btn_close);
+        Button btn_close = (Button) findViewById(R.id.btn_close);
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    void show_mroom(){
+
+    void show_mroom() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_dialog_custom, null);
@@ -83,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText input_room = (EditText) view.findViewById(R.id.input_room);
         final EditText input_time = (EditText) view.findViewById(R.id.input_time);
         final EditText input_place = (EditText) view.findViewById(R.id.input_place);
-        Button btn_create = (Button)view.findViewById(R.id.btn_create);
-        Button btn_back = (Button)view.findViewById(R.id.btn_back);
+        Button btn_create = (Button) view.findViewById(R.id.btn_create);
+        Button btn_back = (Button) view.findViewById(R.id.btn_back);
 
         final AlertDialog dialog = builder.create();
 
@@ -95,13 +98,14 @@ public class MainActivity extends AppCompatActivity {
                 String roomTime = input_time.getText().toString();
                 String roomPlace = input_place.getText().toString();
 
-                try{
+                try {
                     openDatabase(dbName);
+
+
                     insertData(roomId, roomName, roomTime, roomPlace);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 dialog.dismiss();//종료
             }
         });
@@ -114,40 +118,49 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
+
     public void openDatabase(String databaseName){
+        Toast.makeText(getApplicationContext(), "DB가 호출되었습니다!", Toast.LENGTH_SHORT).show();
+        DatabaseHelper helper = new DatabaseHelper(this, dbName, null, 1);
+        database = helper.getWritableDatabase();
+    }
+
+    /*
+    public void openDatabase(String databaseName) {
         Toast.makeText(getApplicationContext(), "DB가 호출되었습니다!", Toast.LENGTH_SHORT).show();
 
         //DB 저장소 만듦
         database = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
 
         //DB가 제대로 생성되었는지 확인
-        if(database != null){
+        if (database != null) {
             Toast.makeText(getApplicationContext(), "DB가 오픈되었습니다!", Toast.LENGTH_SHORT).show();
         }
     }
-    public void insertData(String roomId, String roomName, String roomTime, String roomPlace){
+    */
+
+    public void insertData(String roomId, String roomName, String roomTime, String roomPlace) {
         Toast.makeText(getApplicationContext(), "데이터를 넣을 준비 완료!", Toast.LENGTH_SHORT).show();
-        if(database != null){
+        if (database != null) {
             String sql = "insert into byeruss_make_room(roomId, roomName, roomTime, roomPlace) values(?,?,?,?)";
             Object[] params = {roomId, roomName, roomTime, roomPlace};
 
             database.execSQL(sql, params);
 
             Toast.makeText(getApplicationContext(), "DB가 오픈되었습니다!", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), "DB를 열어야 합니다...", Toast.LENGTH_SHORT).show();
         }
-
     }
 
-    void show_froom(){
+    void show_froom() {
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_find_room, null);
         builder2.setView(view);
-        final EditText textInputCode = (EditText)view.findViewById(R.id.text_input_code);
-        final Button btn_check = (Button)view.findViewById(R.id.btn_check);
-        final Button btn_cancel = (Button)view.findViewById(R.id.btn_cancel);
+        final EditText textInputCode = (EditText) view.findViewById(R.id.text_input_code);
+        final Button btn_check = (Button) view.findViewById(R.id.btn_check);
+        final Button btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
 
         final AlertDialog dialog = builder2.create();
 
@@ -171,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {//메뉴버튼 기능
         // Handle presses on the action bar items
@@ -188,18 +202,58 @@ public class MainActivity extends AppCompatActivity {
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
         }
+
         @Override
         public void onDrawerOpened(@NonNull View drawerView) {
 
         }
+
         @Override
         public void onDrawerClosed(@NonNull View drawerView) {
 
         }
+
         @Override
         public void onDrawerStateChanged(int newState) {
 
         }
     };
 
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            //println("onCreate() called");
+
+            String tableName = "customer";
+            if (db != null) {
+                String sql = "CREATE TABLE " + tableName + "("
+                        + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        + "name TEXT,"
+                        + "age INT,"
+                        + "mobile TEXT"
+                        + ")";
+                db.execSQL(sql);
+                Toast.makeText(getApplicationContext(), "데이터를 넣을 준비 완료!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "db를 열어야 합니다...", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade() called: " + oldVersion + " / " + newVersion);
+
+            // 1 -> 2 로 바뀐 경우
+            if (newVersion > 1) {
+                String tableName = "byeruss_make_room";
+                db.execSQL("DROP TABLE IF EXISTS " + tableName);
+                //println(tableName + " table deleted");
+            }
+        }
+    }
 }
