@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,10 +16,27 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class RoomDataActivity extends AppCompatActivity {
+
+    private final String TAG = "RoomDataActivity";
+    private String DB_PATH =  " /data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
+
+    ListView myRoomList = null;
+    Button mBtInsert = null;
+
+    EditText input_id = null;
+    EditText input_room = null;
+    EditText input_time = null;
+    EditText input_place = null;
+
+    MyDBHandler mHandler = null;
+    Cursor mCursor = null;
+    SimpleCursorAdapter mAdapter = null;
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -28,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_room_data);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
