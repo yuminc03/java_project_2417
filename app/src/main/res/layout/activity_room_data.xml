@@ -15,5 +15,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ListView
+        android:id="@+id/my_room_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <include layout="@layout/activity_drawer" />
 </androidx.drawerlayout.widget.DrawerLayout>
