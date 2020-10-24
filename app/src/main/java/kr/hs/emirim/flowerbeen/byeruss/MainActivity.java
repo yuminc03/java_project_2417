@@ -6,19 +6,43 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 
+import android.content.DialogInterface;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogCustomActivity.ExampleDialogListener {
+
+    private final String TAG = "RoomDataActivity";
+    private String DB_PATH =  " /data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
+
+    ListView myRoomList = null;
+
+    EditText input_room;
+    EditText input_time;
+    EditText input_place;
+
+    EditText text_input_code = null;
+    Button btn_check = null;
+    Button btn_cancel = null;
+
+    MyDBHandler mHandler = null;
+    Cursor mCursor = null;
+    SimpleCursorAdapter mAdapter = null;
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -28,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_room_data);
+
+        myRoomList = (ListView)findViewById(R.id.my_room_list);
+        myRoomList.setOnItemLongClickListener(mLongClickListener);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
@@ -36,11 +63,18 @@ public class MainActivity extends AppCompatActivity {
         btn_find = (Button) findViewById(R.id.btn_find);//방 찾기
         btn_make = (Button) findViewById(R.id.btn_make);//방 만들기
 
+        text_input_code = (EditText) findViewById(R.id.text_input_code);
+        btn_check = (Button) findViewById(R.id.btn_check);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel);
+
+        if( mHandler == null ) {
+            mHandler = MyDBHandler.open(MainActivity.this, DB_PATH);
+        }
 
         btn_make.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                show_mroom();
+                openCreateDialog();
             }
         });
 
@@ -68,59 +102,72 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void show_mroom() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_dialog_custom, null);
-        builder.setView(view);
-        final EditText input_id = (EditText) view.findViewById(R.id.input_id);
-        final EditText input_room = (EditText) view.findViewById(R.id.input_room);
-        final EditText input_time = (EditText) view.findViewById(R.id.input_time);
-        final EditText input_place = (EditText) view.findViewById(R.id.input_place);
-        Button btn_create = (Button) view.findViewById(R.id.btn_create);
-        Button btn_back = (Button) view.findViewById(R.id.btn_back);
-
-        final AlertDialog dialog = builder.create();
-
-        btn_create.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String roomId = input_id.getText().toString();
-                String roomName = input_room.getText().toString();
-                String roomTime = input_time.getText().toString();
-                String roomPlace = input_place.getText().toString();
-
-                try {
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                dialog.dismiss();//종료
-            }
-        });
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
+    public void openCreateDialog(){
+        DialogCustomActivity dialogCustomActivity = new DialogCustomActivity();
+        dialogCustomActivity.show(getSupportFragmentManager(), "Dialog Custom Activity");
     }
+
+    @Override
+    public void applyTexts(String roomName, String roomTime, String roomPlace) {
+        input_room.setText(roomName);
+        input_time.setText(roomTime);
+        input_place.setText(roomPlace);
+    }
+
+    AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            mCursor.moveToPosition(position);
+            Log.d(TAG, "roomId : "+mCursor.getString(0) + "roomName : " + mCursor.getString(1));
+            mHandler.delete(mCursor.getString(1));
+
+            mCursor = mHandler.select();  // DB 새로 가져오기
+            mAdapter.changeCursor(mCursor); // Adapter에 변경된 Cursor 설정하기
+            mAdapter.notifyDataSetChanged(); // 업데이트 하기
+
+            return true;
+        }
+    };
+
+    public void insertToDB() {
+        Log.d(TAG, "insertToDB");
+
+        String room, time, place;
+        if( (input_room.getText() != null) && (input_time.getText() != null) && (input_place.getText() != null)) {
+            room = input_room.getText().toString();
+            time = input_time.getText().toString();
+            place = input_place.getText().toString();
+        }
+        else {
+            Toast.makeText(MainActivity.this, "Please enter the all members", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mHandler.insert(room, time, place);
+
+        mCursor = mHandler.select();  // DB 새로 가져오기
+        mAdapter.changeCursor(mCursor); // Adapter에 변경된 Cursor 설정하기
+        mAdapter.notifyDataSetChanged(); // 업데이트 하기
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandler.close();
+    }
+
     void show_froom() {
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_find_room, null);
         builder2.setView(view);
-        final EditText textInputCode = (EditText) view.findViewById(R.id.text_input_code);
-        final Button btn_check = (Button) view.findViewById(R.id.btn_check);
-        final Button btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
-
         final AlertDialog dialog = builder2.create();
 
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String RoomCode = textInputCode.getText().toString();
+                //String RoomCode = text_input_code.getText().toString();
             }
         });
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -171,4 +218,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
 }

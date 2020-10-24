@@ -4,37 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <EditText
-        android:id="@+id/input_id"
-        android:layout_width="322dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="68dp"
-        android:gravity="left"
-        android:hint="@string/input_room_id"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/room_id"
-        android:layout_width="130dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
-        android:gravity="left"
-        android:text="@string/make_meetings"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="모임 아이디" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".DialogCustomActivity">
 
     <TextView
         android:id="@+id/title"
@@ -53,7 +24,7 @@
         android:id="@+id/room_name"
         android:layout_width="130dp"
         android:layout_height="36dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="40dp"
         android:background="#FFFFFF"
         android:gravity="left"
         android:text="@string/make_meetings"
@@ -66,15 +37,15 @@
 
     <EditText
         android:id="@+id/input_room"
-        android:layout_width="325dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="264dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="88dp"
         android:gravity="left"
         android:hint="@string/input1"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -95,11 +66,11 @@
 
     <EditText
         android:id="@+id/input_time"
-        android:layout_width="327dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
+        android:layout_width="264dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
         android:gravity="left"
         android:hint="@string/input2"
         android:textColor="#000000"
@@ -111,7 +82,7 @@
         android:id="@+id/room_place"
         android:layout_width="115dp"
         android:layout_height="35dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:background="#FFFFFF"
         android:gravity="left"
         android:text="@string/place"
@@ -124,44 +95,16 @@
 
     <EditText
         android:id="@+id/input_place"
-        android:layout_width="328dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="264dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="88dp"
         android:gravity="left"
         android:hint="@string/input3"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_time" />
-
-    <Button
-        android:id="@+id/btn_create"
-        android:layout_width="63dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="24dp"
-        android:background="#76FFD4"
-        android:text="확인"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.313"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_place" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="60dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="24dp"
-        android:background="#979797"
-        android:text="취소"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_place" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

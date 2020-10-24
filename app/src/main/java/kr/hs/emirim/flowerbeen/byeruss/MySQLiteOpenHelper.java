@@ -13,28 +13,17 @@ class MySQLiteOpenHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
     @Override
-    public void onCreate(SQLiteDatabase db) {//사용중인 DB가 없을 때 호출
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {//사용중인 DB가 없을 때 호출
 
-        //println("onCreate() called");
-        if (db != null) {
-            String sql = "CREATE TABLE " + tableName + "("
-                    + "roomId TEXT NOT NULL PRIMARY KEY ,"
-                    + "roomName TEXT NOT NULL,"
-                    + "roomTime TEXT NOT NULL,"
-                    + "roomPlace TEXT NOT NULL"
-                    + ")";
-            db.execSQL(sql);
-            //println("table created");
-        } else {
-            //println("open database first");
-        }
+        String sql = "CREATE TABLE tableName (roomId INTEGER NOT NULL PRIMARY KEY, roomName TEXT NOT NULL, roomTime TEXT NOT NULL, roomPlace TEXT NOT NULL)";
+        sqLiteDatabase.execSQL(sql);
+
     }
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {//사용중인 코드의 버전이 바뀐 경우 호출
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {//사용중인 코드의 버전이 바뀐 경우 호출
         // 1 -> 2 로 바뀐 경우
-        if (newVersion > 1) {
-            db.execSQL("DROP TABLE IF EXISTS " + tableName);
-            //println(tableName + " table deleted");
-        }
+        String sql="DROP TABLE IF EXISTS tableName";
+        sqLiteDatabase.execSQL(sql);
+        onCreate(sqLiteDatabase);
     }
 }
