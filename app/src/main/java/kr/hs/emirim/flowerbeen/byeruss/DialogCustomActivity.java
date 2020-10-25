@@ -26,6 +26,10 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_dialog_custom, null);
 
+        input_room = (EditText)view.findViewById(R.id.input_room);
+        input_time = (EditText)view.findViewById(R.id.input_time);
+        input_place = (EditText)view.findViewById(R.id.input_place);
+
         builder.setView(view)
             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -43,9 +47,7 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
                 dialogInterface.dismiss();
             }
         });
-        input_room = (EditText)view.findViewById(R.id.input_room);
-        input_time = (EditText)view.findViewById(R.id.input_time);
-        input_place = (EditText)view.findViewById(R.id.input_place);
+
 
         return builder.create();
     }

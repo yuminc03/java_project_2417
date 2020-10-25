@@ -24,8 +24,7 @@ public class MyDBHandler {
         return new MyDBHandler(context, name);
     }
 
-    public Cursor select()
-    {
+    public Cursor select() {
         mDB = mHelper.getReadableDatabase();
         Cursor c = mDB.query(tableName, null, null, null, null, null, null);
         return c;

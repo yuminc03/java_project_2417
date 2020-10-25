@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements DialogCustomActivity.ExampleDialogListener {
 
-    private final String TAG = "RoomDataActivity";
+    private final String TAG = "MainActivity";
     private String DB_PATH =  " /data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
 
     ListView myRoomList = null;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements DialogCustomActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_data);
+        setContentView(R.layout.activity_main);
 
         myRoomList = (ListView)findViewById(R.id.my_room_list);
         myRoomList.setOnItemLongClickListener(mLongClickListener);
