@@ -7,14 +7,31 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
+import kr.hs.emirim.flowerbeen.byeruss.RoomItem;
+import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
+
 public class MyDBHandler {
 
-    private final String TAG = "MyDBHandler";
+    private Context context;
 
+    private final String TAG = "MyDBHandler";
     SQLiteOpenHelper mHelper = null;
     SQLiteDatabase mDB = null;
     String tableName = "byeruss_make_room";
 
+    public MyDBHandler(Context context){
+        this.context = context;
+        Logger.addLogAdapter(new AndroidLogAdapter());
+    }
+
+    public long insertRoom(RoomItem roomItem){
+        long id = -1;
+        
+        return id;
+    }
     public MyDBHandler(Context context, String name) {
         mHelper = new MySQLiteOpenHelper(context, name, null, 1);
     }
