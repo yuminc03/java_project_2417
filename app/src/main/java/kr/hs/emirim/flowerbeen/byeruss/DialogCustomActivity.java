@@ -13,12 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DialogCustomActivity extends AppCompatDialogFragment {
-    EditText input_room;
-    EditText input_time;
-    EditText input_place;
-    private ExampleDialogListener listener;
-    MainActivity mainActivity;
+    private EditText input_room;
+    private EditText input_time;
+    private EditText input_place;
 
+    private String roomName = "";
+    private String roomTime = "";
+    private String roomPlace = "";
+
+    public DialogCustomActivity(){
+
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -37,8 +42,7 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
                 String roomName = input_room.getText().toString();
                 String roomTime = input_time.getText().toString();
                 String roomPlace = input_place.getText().toString();
-                listener.applyTexts(roomName, roomTime, roomPlace);
-                mainActivity.insertToDB();
+
             }
         })
             .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -48,25 +52,7 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
             }
         });
 
-
         return builder.create();
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        try {
-            listener = (ExampleDialogListener)context;
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-            throw new ClassCastException (context.toString() +
-                    "must implement ExampleDialogListener");
-        }
-    }
-
-    public interface ExampleDialogListener{
-        void applyTexts(String roomName, String roomTime, String roomPlace);
     }
 
 }

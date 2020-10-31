@@ -6,11 +6,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 
-import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,8 +21,10 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
 
-public class MainActivity extends AppCompatActivity implements DialogCustomActivity.ExampleDialogListener {
+
+public class MainActivity extends AppCompatActivity{
 
     private final String TAG = "MainActivity";
     private String DB_PATH =  " /data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements DialogCustomActiv
         btn_make.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openCreateDialog();
+
             }
         });
 
@@ -100,18 +99,6 @@ public class MainActivity extends AppCompatActivity implements DialogCustomActiv
                 return true;
             }
         });
-    }
-
-    public void openCreateDialog(){
-        DialogCustomActivity dialogCustomActivity = new DialogCustomActivity();
-        dialogCustomActivity.show(getSupportFragmentManager(), "Dialog Custom Activity");
-    }
-
-    @Override
-    public void applyTexts(String roomName, String roomTime, String roomPlace) {
-        input_room.setText(roomName);
-        input_time.setText(roomTime);
-        input_place.setText(roomPlace);
     }
 
     AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {
