@@ -23,10 +23,12 @@ public class MyDBHandler {
 
     private Context context;
 
+    /*
     private final String TAG = "MyDBHandler";
     SQLiteOpenHelper mHelper = null;
     SQLiteDatabase mDB = null;
     String tableName = "byeruss_make_room";
+     */
 
     public MyDBHandler(Context context){//생성자
         this.context = context;

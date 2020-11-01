@@ -7,12 +7,17 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
 import kr.hs.emirim.flowerbeen.byeruss.R;
+import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
 public class DialogCustomActivity extends AppCompatDialogFragment {
 
@@ -21,6 +26,8 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
     private EditText input_room;
     private EditText input_time;
     private EditText input_place;
+    private Button btn_create_room;
+    private Button btn_cancel_room;
 
     private String roomName = "";
     private String roomTime = "";
@@ -43,6 +50,65 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
 
         return dialogCustomActivity;
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.activity_dialog_custom, container, false);
+
+        input_room = view.findViewById(R.id.input_room);
+        input_time = view.findViewById(R.id.input_time);
+        input_place = view.findViewById(R.id.input_place);
+        btn_create_room = view.findViewById(R.id.btn_create_room);
+        btn_cancel_room = view.findViewById(R.id.btn_create_room);
+
+        String title = getArguments().getString(Config.TITLE);
+        getDialog().setTitle(title);
+
+        btn_create_room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                roomName = input_room.getText().toString();
+                roomTime = input_time.getText().toString();
+                roomPlace = input_place.getText().toString();
+
+                RoomItem roomItem = new RoomItem(roomName, roomTime, roomPlace);
+
+                MyDBHandler myDBHandler = new MyDBHandler(getContext());
+
+
+                int id = myDBHandler.insertRoom(roomItem);
+
+                if(id>0){
+                    roomItem.setRoomId(id);
+                    roomCreateListener.onRoomCreated(roomItem);
+                    getDialog().dismiss();
+                }
+            }
+        });
+        btn_cancel_room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
+            }
+        });
+
+        return view;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            //no inspection Constant Conditions
+            //검사 없음 일정한 조건
+            dialog.getWindow().setLayout(width, height);
+        }
+    }
+
+    /*
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -73,6 +139,8 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
 
         return builder.create();
     }
+
+     */
 
 }
 

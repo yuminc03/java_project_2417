@@ -22,4 +22,6 @@ public class Config {
     public static final String COLUMN_MEMBER_5 = "member5";
     public static final String COLUMN_MEMBER_6 = "member6";
 
+    public static final String TITLE = "title";
+
 }
