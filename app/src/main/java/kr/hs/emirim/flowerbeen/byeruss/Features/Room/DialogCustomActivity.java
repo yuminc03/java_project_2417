@@ -1,4 +1,4 @@
-package kr.hs.emirim.flowerbeen.byeruss;
+package kr.hs.emirim.flowerbeen.byeruss.Features.Room;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,7 +12,12 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import kr.hs.emirim.flowerbeen.byeruss.R;
+
 public class DialogCustomActivity extends AppCompatDialogFragment {
+
+    private static RoomCreateListener roomCreateListener;
+
     private EditText input_room;
     private EditText input_time;
     private EditText input_place;
@@ -23,6 +28,20 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
 
     public DialogCustomActivity(){
 
+    }
+
+    public static DialogCustomActivity newInstance(String title, RoomCreateListener listener){
+        roomCreateListener = listener;
+        DialogCustomActivity dialogCustomActivity = new DialogCustomActivity();
+        Bundle args = new Bundle();//Bundle = 여러가지의 타입의 값을 저장하는 Map 클래스
+        //Bundle은 아무거나 포장할 수 있는 상자를 의미하고 이 포장 박스를 이용하여
+        // 이리저리 인텐트도 오고갈 수 있고 다양한 데이터 통신에 이용 할 수 있다.
+        args.putString("title", title);
+        dialogCustomActivity.setArguments(args);//값을 전달한다
+
+        dialogCustomActivity.setStyle(AppCompatDialogFragment.STYLE_NORMAL, R.style.CustomDialog);
+
+        return dialogCustomActivity;
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

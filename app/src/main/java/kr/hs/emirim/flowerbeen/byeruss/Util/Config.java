@@ -11,7 +11,6 @@ public class Config {
     public static final String COLUMN_ROOM_NAME = "roomName";
     public static final String COLUMN_ROOM_TIME = "roomTime";
     public static final String COLUMN_ROOM_PLACE = "roomPlace";
-    public static final String COLUMN_ROOM_MEMBER = "roomMember";
 
     //방에 있는 멤버 테이블
     public static final String MEMBER_TABLE_NAME = "byeruss_room_members";

@@ -13,17 +13,23 @@ class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     private static MySQLiteOpenHelper mySQLiteOpenHelper;
 
-    private final String TAG = "MySQLiteOpenHelper";
-
+    //all static variables
     private static final int DATABASE_VERSION = 1;
 
     //database name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
 
     //constructor
-    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int i) {
-        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    public MySQLiteOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Logger.addLogAdapter(new AndroidLogAdapter());
+    }
+
+    public static synchronized MySQLiteOpenHelper getInstance(Context context){
+        if(mySQLiteOpenHelper == null){
+            mySQLiteOpenHelper = new MySQLiteOpenHelper(context);
+        }
+        return mySQLiteOpenHelper;
     }
 
     @Override
@@ -33,8 +39,7 @@ class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 + Config.COLUMN_ROOM_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                 + Config.COLUMN_ROOM_NAME +" TEXT NOT NULL, "
                 + Config.COLUMN_ROOM_TIME +" TEXT NOT NULL, "
-                + Config.COLUMN_ROOM_PLACE +" TEXT NOT NULL, "
-                + Config.COLUMN_ROOM_MEMBER +" TEXT NOT NULL "
+                + Config.COLUMN_ROOM_PLACE +" TEXT NOT NULL "
                 + ")";
 
         String CREATE_MEMBER_TABLE = "CREATE TABLE " +  Config.MEMBER_TABLE_NAME + "("

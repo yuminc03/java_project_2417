@@ -1,23 +1,23 @@
-package kr.hs.emirim.flowerbeen.byeruss;
+package kr.hs.emirim.flowerbeen.byeruss.Features.Room;
 
 public class RoomItem {
-    private String RoomId;
+    private int RoomId;
     private String RoomName;
     private String RoomTime;
     private String RoomPlace;
 
-    public RoomItem(String RoomId, String RoomName, String RoomTime, String RoomPlace){
-        this.RoomId = RoomId;
+    public RoomItem(String RoomName, String RoomTime, String RoomPlace){
+        //this.RoomId = RoomId;
         this.RoomName = RoomName;
         this.RoomTime = RoomTime;
         this.RoomPlace = RoomPlace;
     }
 
-    public String getRoomId() {
+    public int getRoomId() {
         return RoomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         RoomId = roomId;
     }
 

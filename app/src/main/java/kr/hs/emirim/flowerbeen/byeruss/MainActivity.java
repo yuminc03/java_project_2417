@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
     private final String TAG = "MainActivity";
     private String DB_PATH =  " /data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
 
-    ListView myRoomList = null;
+    //ListView myRoomList = null;
 
     EditText input_room;
     EditText input_time;
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity{
     Button btn_check = null;
     Button btn_cancel = null;
 
-    MyDBHandler mHandler = null;
-    Cursor mCursor = null;
-    SimpleCursorAdapter mAdapter = null;
+    //MyDBHandler mHandler = null;
+    //Cursor mCursor = null;
+    //SimpleCursorAdapter mAdapter = null;
 
     private DrawerLayout drawerLayout;
     private View drawerView;
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myRoomList = (ListView)findViewById(R.id.my_room_list);
-        myRoomList.setOnItemLongClickListener(mLongClickListener);
+        //myRoomList = (ListView)findViewById(R.id.my_room_list);
+        //myRoomList.setOnItemLongClickListener(mLongClickListener);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
@@ -66,9 +66,12 @@ public class MainActivity extends AppCompatActivity{
         btn_check = (Button) findViewById(R.id.btn_check);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
 
+        /*
         if( mHandler == null ) {
             mHandler = MyDBHandler.open(MainActivity.this, DB_PATH);
         }
+
+         */
 
         btn_make.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    /*
     AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -144,6 +148,8 @@ public class MainActivity extends AppCompatActivity{
         mHandler.close();
     }
 
+
+     */
     void show_froom() {
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
