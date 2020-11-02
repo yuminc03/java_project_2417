@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomItem;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
 public class MyDBHandler {

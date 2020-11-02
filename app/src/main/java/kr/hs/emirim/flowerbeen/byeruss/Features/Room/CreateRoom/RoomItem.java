@@ -1,4 +1,4 @@
-package kr.hs.emirim.flowerbeen.byeruss.Features.Room;
+package kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom;
 
 public class RoomItem {
     private int RoomId;
