@@ -9,7 +9,7 @@ import com.orhanobut.logger.Logger;
 
 import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
-class MySQLiteOpenHelper extends SQLiteOpenHelper {
+public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     private static MySQLiteOpenHelper mySQLiteOpenHelper;
 

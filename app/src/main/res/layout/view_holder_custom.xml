@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:padding="8dp"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/idTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="roomID" />
+
+    <ImageView
+        android:id="@+id/editImageView"
+        android:layout_width="32dp"
+        android:layout_height="31dp"
+        android:layout_marginRight="8dp"
+        android:alpha="0.5"
+        android:contentDescription="Edit Single room information"
+        android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintRight_toLeftOf="@+id/deleteImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/deleteImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@android:drawable/ic_menu_delete"
+        android:alpha="0.5"
+        android:contentDescription="Delete room from SQLite database" />
+
+    <TextView
+        android:id="@+id/roomNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomName"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idTextView" />
+
+    <TextView
+        android:id="@+id/roomNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintLeft_toRightOf="@id/roomNameTitle"
+        app:layout_constraintTop_toBottomOf="@id/idTextView"
+        tools:text="코로나out!" />
+
+    <TextView
+        android:id="@+id/roomTimeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomTime"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roomNameTitle" />
+
+    <TextView
+        android:id="@+id/roomTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintLeft_toRightOf="@id/roomTimeTitle"
+        app:layout_constraintTop_toBottomOf="@id/roomNameTitle"
+        tools:text="PM.1:00" />
+
+    <TextView
+        android:id="@+id/roomPlaceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomPlace"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roomTimeTitle" />
+
+    <TextView
+        android:id="@+id/roomPlaceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintLeft_toRightOf="@id/roomPlaceTitle"
+        app:layout_constraintTop_toBottomOf="@id/roomTimeTitle"
+        tools:text="미림여자정보고" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
