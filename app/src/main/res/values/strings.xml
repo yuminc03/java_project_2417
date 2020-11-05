@@ -20,4 +20,6 @@
     <string name="roomName">모임 이름:</string>
     <string name="roomTime">모임 시간 :</string>
     <string name="roomPlace">모임 장소 :</string>
+    <string name="edit_button_description">Edit Single room information</string>
+    <string name="cross_image_content_description">Delete room from SQLite database</string>
 </resources>

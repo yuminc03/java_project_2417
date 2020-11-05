@@ -2,9 +2,12 @@ package kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +20,7 @@ import java.util.List;
 import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 import kr.hs.emirim.flowerbeen.byeruss.R;
+import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
 public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
@@ -24,7 +28,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
     private List<RoomItem> roomList;
     private MySQLiteOpenHelper mySQLiteOpenHelper;
 
-    public RoomListRecyclerViewAdapter(Context context, List<RoomItem> studentList) {
+    public RoomListRecyclerViewAdapter(Context context, List<RoomItem> roomList) {
         this.context = context;
         this.roomList = roomList;
         mySQLiteOpenHelper = new MySQLiteOpenHelper(context);
@@ -33,19 +37,19 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_student, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_room, parent, false);
         return new CustomViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final int itemPosition = position;
-        final RoomItem roomItem = studentList.get(position);
+        final RoomItem roomItem = roomList.get(position);
 
-        holder.nameTextView.setText(student.getName());
-        holder.registrationNumTextView.setText(String.valueOf(student.getRegistrationNumber()));
-        holder.emailTextView.setText(student.getEmail());
-        holder.phoneTextView.setText(student.getPhoneNumber());
+        holder.nameTextView.setText(roomItem.getName());
+        holder.registrationNumTextView.setText(roomItem.getRoomName());
+        holder.emailTextView.setText(roomItem.getRoomTime());
+        holder.phoneTextView.setText(roomItem.getRoomPlace());
 
         holder.crossButtonImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,10 +79,10 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
         holder.editButtonImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StudentUpdateDialogFragment studentUpdateDialogFragment = StudentUpdateDialogFragment.newInstance(student.getRegistrationNumber(), itemPosition, new StudentUpdateListener() {
+                StudentUpdateDialogFragment studentUpdateDialogFragment = StudentUpdateDialogFragment.newInstance(roomItem.getRegistrationNumber(), itemPosition, new StudentUpdateListener() {
                     @Override
-                    public void onStudentInfoUpdated(Student student, int position) {
-                        studentList.set(position, student);
+                    public void onStudentInfoUpdated(RoomItem roomItem, int position) {
+                        studentList.set(position, roomItem);
                         notifyDataSetChanged();
                     }
                 });
@@ -97,7 +101,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
     }
 
     private void deleteStudent(int position) {
-        Student student = studentList.get(position);
+        RoomItem roomItem = studentList.get(position);
         long count = databaseQueryClass.deleteStudentByRegNum(student.getRegistrationNumber());
 
         if(count>0){
