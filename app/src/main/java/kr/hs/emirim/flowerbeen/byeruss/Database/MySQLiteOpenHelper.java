@@ -36,14 +36,14 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {//사용중인 DB가 없을 때 호출
 
         String CREATE_ROOM_TABLE = "CREATE TABLE " +  Config.ROOM_TABLE_NAME + "("
-                + Config.COLUMN_ROOM_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_ROOM_ID + " INTEGER NOT NULL PRIMARY KEY, "
                 + Config.COLUMN_ROOM_NAME +" TEXT NOT NULL, "
                 + Config.COLUMN_ROOM_TIME +" TEXT NOT NULL, "
                 + Config.COLUMN_ROOM_PLACE +" TEXT NOT NULL "
                 + ")";
 
         String CREATE_MEMBER_TABLE = "CREATE TABLE " +  Config.MEMBER_TABLE_NAME + "("
-                + Config.COLUMN_MEMBER_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_MEMBER_ID + " INTEGER NOT NULL PRIMARY KEY, "
                 + Config.COLUMN_MEMBER_1 + " TEXT, "
                 + Config.COLUMN_MEMBER_2 + " TEXT, "
                 + Config.COLUMN_MEMBER_3 + " TEXT, "

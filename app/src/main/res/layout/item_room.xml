@@ -23,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="roomID" />
 
+    <!--
     <ImageView
         android:id="@+id/editImageView"
         android:layout_width="32dp"
@@ -33,6 +34,7 @@
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintRight_toLeftOf="@+id/deleteImageView"
         app:layout_constraintTop_toTopOf="parent" />
+        !-->
 
     <ImageView
         android:id="@+id/deleteImageView"

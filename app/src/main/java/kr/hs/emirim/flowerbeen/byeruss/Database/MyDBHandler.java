@@ -77,7 +77,7 @@ public class MyDBHandler {
                 if(cursor.moveToFirst()){
                     List<RoomItem> roomList = new ArrayList<>();
                     do {
-                        //int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_ROOM_ID));
+                        int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_ROOM_ID));
                         String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_NAME));
                         String time = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_TIME));
                         String place = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_PLACE));
@@ -119,7 +119,7 @@ public class MyDBHandler {
              */
 
             if(cursor.moveToFirst()){
-                //int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_ROOM_ID));
+                int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_ROOM_ID));
                 String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_NAME));
                 String time = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_TIME));
                 String place = cursor.getString(cursor.getColumnIndex(Config.COLUMN_ROOM_PLACE));
@@ -224,6 +224,8 @@ public class MyDBHandler {
 
         return count;
     }
+
+    //members
 
     /*
     public MyDBHandler(Context context, String name) {

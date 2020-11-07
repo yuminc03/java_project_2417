@@ -71,7 +71,6 @@ public class DialogCustomActivity extends AppCompatDialogFragment {
 
                 MyDBHandler myDBHandler = new MyDBHandler(getContext());
 
-
                 int id = myDBHandler.insertRoom(roomItem);
 
                 if(id>0){

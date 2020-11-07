@@ -15,7 +15,7 @@ public class CustomViewHolder extends RecyclerView.ViewHolder{//room 데이터�
     TextView roomTimeTextView;
     TextView roomPlaceTextView;
     ImageView crossButtonImageView;
-    ImageView editButtonImageView;
+    //ImageView editButtonImageView;
 
     public CustomViewHolder(View itemView) {
         super(itemView);
@@ -25,6 +25,6 @@ public class CustomViewHolder extends RecyclerView.ViewHolder{//room 데이터�
         roomTimeTextView = itemView.findViewById(R.id.roomTimeTextView);
         roomPlaceTextView = itemView.findViewById(R.id.roomPlaceTextView);
         crossButtonImageView = itemView.findViewById(R.id.deleteImageView);
-        editButtonImageView = itemView.findViewById(R.id.editImageView);
+        //editButtonImageView = itemView.findViewById(R.id.editImageView);
     }
 }

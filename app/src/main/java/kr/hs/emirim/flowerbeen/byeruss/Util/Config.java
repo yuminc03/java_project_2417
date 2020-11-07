@@ -23,5 +23,7 @@ public class Config {
     public static final String COLUMN_MEMBER_6 = "member6";
 
     public static final String TITLE = "title";
+    public static final String CREATE_ROOM = "create_room";
+    public static final String UPDATE_ROOM = "update_room";
 
 }

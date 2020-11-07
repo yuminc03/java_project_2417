@@ -22,4 +22,5 @@
     <string name="roomPlace">모임 장소 :</string>
     <string name="edit_button_description">Edit Single room information</string>
     <string name="cross_image_content_description">Delete room from SQLite database</string>
+    <string name="database_summary">Total Rooms: %1$d. Total Members: %2$d</string>
 </resources>
