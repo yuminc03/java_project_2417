@@ -1,6 +1,7 @@
 package kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import java.util.List;
 import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
 import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.DialogCustomActivity;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.DialogFindActivity;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListener;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 import kr.hs.emirim.flowerbeen.byeruss.R;
@@ -40,13 +42,13 @@ public class RoomListActivity extends AppCompatActivity implements RoomCreateLis
 
     private List<RoomItem> studentList = new ArrayList<>();
 
+    private String userID;
+
     private DrawerLayout drawerLayout;
     private View drawerView;
     private Button btn_find, btn_make;
-    private EditText text_input_code = null;
-    private Button btn_check = null;
-    private Button btn_cancel = null;
 
+    private TextView summaryTextView;
     private TextView studentListEmptyTextView;
     private RecyclerView recyclerView;
     private RoomListRecyclerViewAdapter roomListRecyclerViewAdapter;
@@ -64,10 +66,8 @@ public class RoomListActivity extends AppCompatActivity implements RoomCreateLis
         btn_find = (Button) findViewById(R.id.btn_find);//방 찾기 다이얼로그
         btn_make = (Button) findViewById(R.id.btn_make);//방 만들기 다이얼로그
 
-        text_input_code = (EditText) findViewById(R.id.text_input_code);
-        btn_check = (Button) findViewById(R.id.btn_check);
-        btn_cancel = (Button) findViewById(R.id.btn_cancel);
-
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
 
         recyclerView = findViewById(R.id.recyclerView);
         studentListEmptyTextView = findViewById(R.id.emptyListTextView);
@@ -170,7 +170,17 @@ public class RoomListActivity extends AppCompatActivity implements RoomCreateLis
         DialogCustomActivity dialogCustomActivity = DialogCustomActivity.newInstance("Create Rooms", this);
         dialogCustomActivity.show(getSupportFragmentManager(), Config.CREATE_ROOM);
     }
+//    private void openRoomFindDialog(){
+//        DialogFindActivity dialogFindActivity = DialogFindActivity.newInstance("Find Rooms", this);
+//        dialogFindActivity.show(getSupportFragmentManager(), Config.FIND_ROOM);
+//    }
 
+    private void printSummary() {
+        long studentNum = myDBHandler.getNumberOfRoom();
+        //long subjectNum = myDBHandler.getNumberOfSubject();
+
+        //summaryTextView.setText(getResources().getString(R.string.database_summary, studentNum, subjectNum));
+    }
     @Override
     public void onRoomCreated(RoomItem roomItem) {
         studentList.add(roomItem);

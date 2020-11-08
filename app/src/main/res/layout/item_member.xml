@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_member"
         android:layout_width="412dp"
         android:layout_height="85dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="27dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,9 +22,9 @@
         android:layout_width="56dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_member"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintHorizontal_bias="0.305"
         app:layout_constraintStart_toEndOf="@+id/btn_members"
         app:srcCompat="@drawable/ic_baseline_comment_24"
         tools:ignore="VectorDrawableCompat" />
@@ -66,107 +59,96 @@
         app:srcCompat="@drawable/ic_baseline_insert_invitation_24"
         tools:ignore="VectorDrawableCompat" />
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="550dp"
-        android:orientation="horizontal"
+    <TextView
+        android:layout_width="401dp"
+        android:layout_height="89dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_member"
+        app:layout_constraintVertical_bias="0.026" />
 
+    <ImageView
+        android:id="@+id/img_member"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_how_to_reg_24"
+        tools:ignore="VectorDrawableCompat" />
 
-        <ImageView
-            android:id="@+id/img_member"
-            android:layout_width="73dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_baseline_how_to_reg_24"
-            tools:ignore="VectorDrawableCompat" />
+    <TextView
+        android:id="@+id/tv_member_name"
+        android:layout_width="44dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="108dp"
+        android:layout_weight="1"
+        android:text="이름"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="285dp"
-            android:layout_height="90dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="106dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="556dp"
+        android:text="안전수칙 점수"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_member_name"
-                android:layout_width="45dp"
-                android:layout_height="31dp"
-                android:layout_margin="5dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:text="이름"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.008"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/mb_safe_score"
+        android:layout_width="27dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="552dp"
+        android:layout_weight="1"
+        android:text="4"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toEndOf="@+id/tv_score" />
 
-            <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="106dp"
-                android:layout_height="29dp"
-                android:layout_margin="5dp"
-                android:baselineAligned="false"
-                android:text="안전수칙 점수"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.813" />
+    <TextView
+        android:id="@+id/mb_safe_score2"
+        android:layout_width="54dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="552dp"
+        android:layout_weight="1"
+        android:text="/5점"
+        android:textColor="#009688"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toEndOf="@+id/mb_safe_score" />
 
-            <TextView
-                android:id="@+id/mb_name"
-                android:layout_width="209dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="4dp"
-                android:layout_weight="1"
-                android:text="나의아이디"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.789"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/mb_name"
+        android:layout_width="209dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="108dp"
+        android:layout_weight="1"
+        android:text="나의아이디"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/mb_safe_score"
-                android:layout_width="27dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="44dp"
-                android:layout_weight="1"
-                android:text="4"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/mb_safe_score2"
-                android:layout_width="54dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="44dp"
-                android:layout_weight="1"
-                android:text="/5점"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.712"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

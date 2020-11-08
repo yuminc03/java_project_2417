@@ -112,7 +112,7 @@ public class MyDBHandler {
                     Config.COLUMN_ROOM_ID + " = ? ", new String[]{String.valueOf(roomid)},
                     null, null, null);
 
-            /**
+            /*
              //raw query를 실행하려면 두 줄 아래의 주석 처리를 제거하십시오. 그리고 위의 sqLiteDatabase.query() 메서드를 주석 처리한다
              String SELECT_QUERY = String.format("SELECT * FROM %s WHERE %s = %s", Config.TABLE_STUDENT, Config.COLUMN_STUDENT_REGISTRATION, String.valueOf(registrationNum));
              cursor = sqLiteDatabase.rawQuery(SELECT_QUERY, null);

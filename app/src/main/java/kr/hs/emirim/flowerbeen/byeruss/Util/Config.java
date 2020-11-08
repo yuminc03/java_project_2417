@@ -25,5 +25,6 @@ public class Config {
     public static final String TITLE = "title";
     public static final String CREATE_ROOM = "create_room";
     public static final String UPDATE_ROOM = "update_room";
+    public static final String FIND_ROOM = "find_room";
 
 }

@@ -62,7 +62,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                deleteStudent(itemPosition);
+                                deleteRoom(itemPosition);
                             }
                         });
 
@@ -102,7 +102,7 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
         });
     }
 
-    private void deleteStudent(int position) {
+    private void deleteRoom(int position) {
         RoomItem roomItem = roomList.get(position);
         long count = myDBHandler.deleteRoomById(roomItem.getRoomId());
 
@@ -110,9 +110,9 @@ public class RoomListRecyclerViewAdapter extends RecyclerView.Adapter<CustomView
             roomList.remove(position);
             notifyDataSetChanged();
             ((RoomListActivity) context).viewVisibility();
-            Toast.makeText(context, "Student deleted successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Room deleted successfully", Toast.LENGTH_LONG).show();
         } else
-            Toast.makeText(context, "Student not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Room not deleted. Something wrong!", Toast.LENGTH_LONG).show();
 
     }
 
