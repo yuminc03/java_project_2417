@@ -14,7 +14,7 @@
     <string name="making">+</string>
     <string name="making2">+</string>
     <string name="sign_out">로그아웃</string>
-    <string name="input_code">코드를 입력해 주세요</string>
+    <string name="input_code">코드(방 아이디(ID))를 입력해 주세요</string>
     <string name="bye_russ">Bye-russ</string>
     <string name="input_room_id">방의 아이디를 입력하세요</string>
     <string name="roomName">모임 이름:</string>
