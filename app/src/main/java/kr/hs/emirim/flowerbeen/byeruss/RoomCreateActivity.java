@@ -2,16 +2,22 @@ package kr.hs.emirim.flowerbeen.byeruss;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListener;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 
 public class RoomCreateActivity extends AppCompatActivity {
 
+    private static RoomCreateListener roomCreateListener;
     private EditText input_room;
     private EditText input_time;
     private EditText input_place;
@@ -41,15 +47,6 @@ public class RoomCreateActivity extends AppCompatActivity {
                 roomPlace = input_place.getText().toString();
 
                 RoomItem roomItem = new RoomItem(roomName, roomTime, roomPlace);
-
-                MyDBHandler myDBHandler = new MyDBHandler(getContext());
-
-                int id = myDBHandler.insertRoom(roomItem);
-
-                if(id>0){
-                    roomItem.setRoomId(id);
-                    roomCreateListener.onRoomCreated(roomItem);
-                }
             }
         });
         btn_cancel_room.setOnClickListener(new View.OnClickListener() {
@@ -60,4 +57,5 @@ public class RoomCreateActivity extends AppCompatActivity {
         });
 
     }
+
 }

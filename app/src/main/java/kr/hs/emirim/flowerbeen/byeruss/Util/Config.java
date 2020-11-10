@@ -14,13 +14,9 @@ public class Config {
 
     //방에 있는 멤버 테이블
     public static final String MEMBER_TABLE_NAME = "byeruss_room_members";
-    public static final String COLUMN_MEMBER_ID = "memberId";
-    public static final String COLUMN_MEMBER_1 = "member1";
-    public static final String COLUMN_MEMBER_2 = "member2";
-    public static final String COLUMN_MEMBER_3 = "member3";
-    public static final String COLUMN_MEMBER_4 = "member4";
-    public static final String COLUMN_MEMBER_5 = "member5";
-    public static final String COLUMN_MEMBER_6 = "member6";
+    public static final String COLUMN_MEMBER_ID = "myRoomId";
+    public static final String COLUMN_MEMBER_1 = "membersId";
+
 
     public static final String TITLE = "title";
     public static final String CREATE_ROOM = "create_room";

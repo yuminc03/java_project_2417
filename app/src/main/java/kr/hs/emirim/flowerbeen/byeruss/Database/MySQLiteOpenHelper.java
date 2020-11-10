@@ -10,6 +10,7 @@ import com.orhanobut.logger.Logger;
 import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
+    private final String TAG = "MySQLiteOpenHelper";
 
     private static MySQLiteOpenHelper mySQLiteOpenHelper;
 
@@ -20,16 +21,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
 
     //constructor
-    public MySQLiteOpenHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        Logger.addLogAdapter(new AndroidLogAdapter());
-    }
-
-    public static synchronized MySQLiteOpenHelper getInstance(Context context){
-        if(mySQLiteOpenHelper == null){
-            mySQLiteOpenHelper = new MySQLiteOpenHelper(context);
-        }
-        return mySQLiteOpenHelper;
+    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     @Override
@@ -45,11 +38,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         String CREATE_MEMBER_TABLE = "CREATE TABLE " +  Config.MEMBER_TABLE_NAME + "("
                 + Config.COLUMN_MEMBER_ID + " INTEGER NOT NULL PRIMARY KEY, "
                 + Config.COLUMN_MEMBER_1 + " TEXT, "
-                + Config.COLUMN_MEMBER_2 + " TEXT, "
-                + Config.COLUMN_MEMBER_3 + " TEXT, "
-                + Config.COLUMN_MEMBER_4 + " TEXT, "
-                + Config.COLUMN_MEMBER_5 + " TEXT, "
-                + Config.COLUMN_MEMBER_6 + " TEXT, "
                 + "FOREIGN KEY (" + Config.COLUMN_MEMBER_ID + ") REFERENCES " + Config.ROOM_TABLE_NAME + "(" + Config.COLUMN_MEMBER_ID + ") ON UPDATE CASCADE ON DELETE CASCADE"
                 + ")";
         sqLiteDatabase.execSQL(CREATE_ROOM_TABLE);

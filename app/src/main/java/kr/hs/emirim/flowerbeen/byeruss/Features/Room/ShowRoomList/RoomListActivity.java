@@ -22,6 +22,7 @@ import kr.hs.emirim.flowerbeen.byeruss.R;
 
 public class RoomListActivity extends AppCompatActivity implements RoomCreateListener{
 
+    private String DB_PATH =  "/storage/emulated/0/person.db";
     private MyDBHandler myDBHandler = new MyDBHandler(this);
 
     private List<RoomItem> studentList = new ArrayList<>();
