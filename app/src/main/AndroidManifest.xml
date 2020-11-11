@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"><!-- Android 9 버전부터 이 옵션 추가해야함. http 보안관련 때문에.. -->
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".RoomCreateActivity"></activity>
-        <activity android:name=".ChoiceActivity" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".RoomCreateActivity"/>
         <activity android:name=".Features.Room.ShowRoomList.RoomListActivity" />
-        <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>

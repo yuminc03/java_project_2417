@@ -19,7 +19,6 @@ import kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList.RoomListActivi
 
 public class RoomCreateActivity extends AppCompatActivity {
 
-    private static RoomCreateListener roomCreateListener;
     private EditText input_room;
     private EditText input_time;
     private EditText input_place;

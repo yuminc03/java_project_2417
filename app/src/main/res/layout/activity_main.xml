@@ -1,19 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn_finding_room"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B6EDE4"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/my_room_list"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_byeruss"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="36dp"
+        android:text="bye-russ"
+        android:textColor="#0349FF"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_user"
+        android:layout_width="165dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="120dp"
+        android:textColor="#009688"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="165dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="120dp"
+        android:text="님 안녕하세요?"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.829"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_make_room"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="212dp"
+        android:background="#2196F3"
+        android:text="모임 만들기"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_find_room"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="296dp"
+        android:background="#009688"
+        android:text="모임 찾기"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_my_room"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="388dp"
+        android:background="#42D377"
+        android:text="나의 모임"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_log_out"
+        android:layout_width="152dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="172dp"
+        android:background="#FF6868"
+        android:text="로그아웃"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

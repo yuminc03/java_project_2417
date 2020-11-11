@@ -58,12 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                                 //서버로부터 id, password를 검사해서 로그인 확인 or 실패
                                 String userID = jsonObject.getString("userID");
                                 String userPass = jsonObject.getString("userPassword");
-                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, ChoiceActivity.class);
 
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPass", userPass);
-
                                 startActivity(intent);
                             }else{//로그인에 실패한 경우
                                 Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
