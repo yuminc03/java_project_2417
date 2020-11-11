@@ -42,7 +42,7 @@ public class MyDBHandler {
         return c;
     }
 
-    public void insert(String roomName, int roomTime, String roomPlace) {
+    public void insert(String roomName, String roomTime, String roomPlace) {
 
         Log.d(TAG, "insert");
 

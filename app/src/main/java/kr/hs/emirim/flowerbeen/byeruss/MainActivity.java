@@ -56,9 +56,6 @@ public class MainActivity extends AppCompatActivity{
         //myRoomList = (ListView)findViewById(R.id.my_room_list);
         //myRoomList.setOnItemLongClickListener(mLongClickListener);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerView = (View) findViewById(R.id.drawer);
-
         btn_find = (Button) findViewById(R.id.btn_find);//방 찾기
         btn_make = (Button) findViewById(R.id.btn_make);//방 만들기
 

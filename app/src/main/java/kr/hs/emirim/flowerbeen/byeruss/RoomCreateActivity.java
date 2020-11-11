@@ -3,6 +3,7 @@ package kr.hs.emirim.flowerbeen.byeruss;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.SimpleCursorAdapter;
 import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListener;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList.RoomListActivity;
 
 public class RoomCreateActivity extends AppCompatActivity {
 
@@ -46,7 +48,11 @@ public class RoomCreateActivity extends AppCompatActivity {
                 roomTime = input_time.getText().toString();
                 roomPlace = input_place.getText().toString();
 
-                RoomItem roomItem = new RoomItem(roomName, roomTime, roomPlace);
+                //RoomItem roomItem = new RoomItem(roomName, roomTime, roomPlace);
+                Intent intent = new Intent(RoomCreateActivity.this, RoomListActivity.class);
+                intent.putExtra("roomName", roomName);
+                intent.putExtra("roomTime", roomTime);
+                intent.putExtra("roomPlace", roomPlace);
             }
         });
         btn_cancel_room.setOnClickListener(new View.OnClickListener() {

@@ -19,7 +19,7 @@ public class ChoiceActivity extends AppCompatActivity {
     private Button btn_my_room;
     private Button btn_log_out;
 
-    private String userID;
+    private String userID; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
