@@ -56,18 +56,21 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
+                startActivity(intent);
             }
         });
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
+                startActivity(intent);
             }
         });
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RoomListActivity.class);
+                startActivity(intent);
             }
         });
     }
