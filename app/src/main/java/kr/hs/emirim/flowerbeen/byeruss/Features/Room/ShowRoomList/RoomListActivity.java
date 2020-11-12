@@ -53,7 +53,7 @@ public class RoomListActivity extends AppCompatActivity{
         if( myDBHandler == null ) {
             myDBHandler = MyDBHandler.open(RoomListActivity.this, DB_PATH);
         }
-
+        insertRoomData();
         cursor = myDBHandler.select();
         simpleCursorAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_activated_2,
                 cursor, new String[]{"roomName", "roomTime", "roomPlace"}, new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);

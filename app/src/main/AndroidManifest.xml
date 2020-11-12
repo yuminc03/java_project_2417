@@ -21,8 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".RoomCreateActivity"/>
+        <activity android:name=".Features.Room.CreateRoom.RoomFindActivity"/>
         <activity android:name=".Features.Room.ShowRoomList.RoomListActivity" />
 
     </application>

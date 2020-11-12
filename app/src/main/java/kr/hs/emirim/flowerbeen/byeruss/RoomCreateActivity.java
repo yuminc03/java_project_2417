@@ -38,7 +38,7 @@ public class RoomCreateActivity extends AppCompatActivity {
         input_time = findViewById(R.id.input_time);
         input_place = findViewById(R.id.input_place);
         btn_create_room = (Button)findViewById(R.id.btn_create_room);
-        btn_cancel_room = (Button)findViewById(R.id.btn_create_room);
+        btn_cancel_room = (Button)findViewById(R.id.btn_cancel_room);
 
         btn_create_room.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +52,7 @@ public class RoomCreateActivity extends AppCompatActivity {
                 intent.putExtra("roomName", roomName);
                 intent.putExtra("roomTime", roomTime);
                 intent.putExtra("roomPlace", roomPlace);
+                startActivity(intent);
             }
         });
         btn_cancel_room.setOnClickListener(new View.OnClickListener() {

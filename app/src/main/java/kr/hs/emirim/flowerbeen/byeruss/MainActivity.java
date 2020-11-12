@@ -49,28 +49,27 @@ public class MainActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         String userID = intent.getStringExtra("userID");
-
         tv_user.setText(userID);
 
         btn_make_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
-                startActivity(intent);
+                Intent i1 = new Intent(MainActivity.this, RoomCreateActivity.class);
+                startActivity(i1);
             }
         });
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
-                startActivity(intent);
+                Intent i2 = new Intent(MainActivity.this, RoomFindActivity.class);
+                startActivity(i2);
             }
         });
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RoomListActivity.class);
-                startActivity(intent);
+                Intent i3 = new Intent(MainActivity.this, RoomListActivity.class);
+                startActivity(i3);
             }
         });
     }
