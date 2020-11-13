@@ -54,22 +54,28 @@ public class MainActivity extends AppCompatActivity{
         btn_make_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i1 = new Intent(MainActivity.this, RoomCreateActivity.class);
-                startActivity(i1);
+                Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
+                startActivity(intent);
             }
         });
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i2 = new Intent(MainActivity.this, RoomFindActivity.class);
-                startActivity(i2);
+                Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
+                startActivity(intent);
             }
         });
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i3 = new Intent(MainActivity.this, RoomListActivity.class);
-                startActivity(i3);
+                Intent intent = new Intent(MainActivity.this, RoomListActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
             }
         });
     }

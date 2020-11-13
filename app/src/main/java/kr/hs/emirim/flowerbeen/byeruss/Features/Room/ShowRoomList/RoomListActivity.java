@@ -27,7 +27,7 @@ import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListen
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
-public class RoomListActivity extends AppCompatActivity{
+public class RoomListActivity extends AppCompatActivity{ 
 
     private final String TAG = "RoomListActivity";
     private String DB_PATH =  "/data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
