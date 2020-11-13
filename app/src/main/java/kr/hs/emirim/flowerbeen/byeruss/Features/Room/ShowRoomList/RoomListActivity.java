@@ -27,7 +27,7 @@ import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListen
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
-public class RoomListActivity extends AppCompatActivity{ 
+public class RoomListActivity extends AppCompatActivity{
 
     private final String TAG = "RoomListActivity";
     private String DB_PATH =  "/data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
@@ -37,6 +37,11 @@ public class RoomListActivity extends AppCompatActivity{
     MyDBHandler myDBHandler = null;
     Cursor cursor = null;
     SimpleCursorAdapter simpleCursorAdapter = null;
+    //cursor adapter는 커서로 읽은 정보를 list로 만들어 주는 역할을 한다.
+    //따라서 DB에서 읽은 정보를 listview 형태로 보여줄때 사용한다.
+
+    //Simple Cursor Adapter : cursor adatper중에 가장 간단한 adapter 이다.
+    //Simple cursor adatper는 cursor에 있는 정보를 textView나 imageView로 보여줄때 사용한다.
 
     private String roomName, roomTime, roomPlace;
 
@@ -53,9 +58,8 @@ public class RoomListActivity extends AppCompatActivity{
         if( myDBHandler == null ) {
             myDBHandler = MyDBHandler.open(RoomListActivity.this, DB_PATH);
         }
-        insertRoomData();
         cursor = myDBHandler.select();
-        simpleCursorAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_activated_2,
+        simpleCursorAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_2,
                 cursor, new String[]{"roomName", "roomTime", "roomPlace"}, new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
         roomListView.setAdapter(simpleCursorAdapter);

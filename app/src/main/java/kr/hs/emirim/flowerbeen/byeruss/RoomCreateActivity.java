@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import kr.hs.emirim.flowerbeen.byeruss.Database.MyDBHandler;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateListener;
@@ -19,6 +21,7 @@ import kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList.RoomListActivi
 
 public class RoomCreateActivity extends AppCompatActivity {
 
+    private String TAG = "RoomCreateActivity";
     private EditText input_room;
     private EditText input_time;
     private EditText input_place;
@@ -28,6 +31,10 @@ public class RoomCreateActivity extends AppCompatActivity {
     private String roomName = "";
     private String roomTime = "";
     private String roomPlace = "";
+
+    MyDBHandler myDBHandler = null;
+    Cursor cursor = null;
+    SimpleCursorAdapter simpleCursorAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +50,50 @@ public class RoomCreateActivity extends AppCompatActivity {
         btn_create_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                roomName = input_room.getText().toString();
-                roomTime = input_time.getText().toString();
-                roomPlace = input_place.getText().toString();
+//                roomName = input_room.getText().toString();
+//                roomTime = input_time.getText().toString();
+//                roomPlace = input_place.getText().toString();
 
-                //RoomItem roomItem = new RoomItem(roomName, roomTime, roomPlace);
+                insertRoomData();
                 Intent intent = new Intent(RoomCreateActivity.this, RoomListActivity.class);
-                intent.putExtra("roomName", roomName);
-                intent.putExtra("roomTime", roomTime);
-                intent.putExtra("roomPlace", roomPlace);
+//                intent.putExtra("roomName", roomName);
+//                intent.putExtra("roomTime", roomTime);
+//                intent.putExtra("roomPlace", roomPlace);
                 startActivity(intent);
             }
         });
         btn_cancel_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(RoomCreateActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
     }
+    public void insertRoomData() {
+        Log.d(TAG, "insertRoomData");
+
+        //String room_name, room_time, room_place;
+
+        if( (input_room.getText() != null) && (input_time.getText() != null)
+                && (input_place.getText() != null) ) {
+            roomName = input_room.getText().toString();
+            roomTime = input_time.getText().toString();
+            roomPlace = input_place.getText().toString();
+        }
+        else {
+            Toast.makeText(RoomCreateActivity.this, "모든 방의 정보들을 입력하세요!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        myDBHandler.insert(roomName, roomTime, roomPlace);
+
+        cursor = myDBHandler.select();  // DB 새로 가져오기
+        simpleCursorAdapter.changeCursor(cursor); // Adapter에 변경된 Cursor 설정하기
+        simpleCursorAdapter.notifyDataSetChanged(); // 업데이트 하기
+
+    }
+
 
 }
