@@ -32,7 +32,7 @@ public class RoomListActivity extends AppCompatActivity{
     private final String TAG = "RoomListActivity";
     private String DB_PATH =  "/data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
 
-    ListView roomListView = null;
+    ListView room_list_view = null;
 
     MyDBHandler myDBHandler = null;
     Cursor cursor = null;
@@ -50,36 +50,39 @@ public class RoomListActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
-        Intent intent = getIntent();
-        roomName = intent.getStringExtra("roomName");
-        roomTime = intent.getStringExtra("roomTime");
-        roomPlace = intent.getStringExtra("roomPlace");
+        room_list_view = (ListView)findViewById(R.id.room_list_view);
+        room_list_view.setOnItemLongClickListener(mLongClickListener);
+
+//        Intent intent = getIntent();
+//        roomName = intent.getStringExtra("roomName");
+//        roomTime = intent.getStringExtra("roomTime");
+//        roomPlace = intent.getStringExtra("roomPlace");
 
         if( myDBHandler == null ) {
             myDBHandler = MyDBHandler.open(RoomListActivity.this, DB_PATH);
         }
         cursor = myDBHandler.select();
-        simpleCursorAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_2,
+        simpleCursorAdapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.item_room,
                 cursor, new String[]{"roomName", "roomTime", "roomPlace"}, new int[]{android.R.id.text1, android.R.id.text2}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
-        roomListView.setAdapter(simpleCursorAdapter);
-
-        AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                cursor.moveToPosition(position);
-                Log.d(TAG, "index : " + cursor.getString(0) + "roomName : " + cursor.getString(1));
-                myDBHandler.delete(cursor.getString(1));
-
-                cursor = myDBHandler.select();  // DB 새로 가져오기
-                simpleCursorAdapter.changeCursor(cursor); // Adapter에 변경된 Cursor 설정하기
-                simpleCursorAdapter.notifyDataSetChanged(); // 업데이트 하기
-
-                return true;
-            }
-        };
+        room_list_view.setAdapter(simpleCursorAdapter);
 
     }
+    AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            cursor.moveToPosition(position);
+            Log.d(TAG, "index : " + cursor.getString(0) + "roomName : " + cursor.getString(1));
+            myDBHandler.delete(cursor.getString(1));
+
+            cursor = myDBHandler.select();  // DB 새로 가져오기
+            simpleCursorAdapter.changeCursor(cursor); // Adapter에 변경된 Cursor 설정하기
+            simpleCursorAdapter.notifyDataSetChanged(); // 업데이트 하기
+
+            return true;
+        }
+    };
+
     public void insertRoomData() {
         Log.d(TAG, "insertRoomData");
 
