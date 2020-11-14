@@ -24,11 +24,11 @@ public class MyDBHandler {
 
     private final String TAG = "MyDBHandler";
 
-    MySQLiteOpenHelper mHelper = null;
-    SQLiteDatabase mDB = null;
+    MySQLiteOpenHelper mySQLiteOpenHelper = null;
+    SQLiteDatabase sqLiteDatabase = null;
 
     public MyDBHandler(Context context, String name) {
-        mHelper = new MySQLiteOpenHelper(context, name, null, 1);
+        mySQLiteOpenHelper = new MySQLiteOpenHelper(context, name, null, 1);
     }
 
     public static MyDBHandler open(Context context, String name) {
@@ -37,8 +37,8 @@ public class MyDBHandler {
 
     public Cursor select()
     {
-        mDB = mHelper.getReadableDatabase();
-        Cursor c = mDB.query("byeruss_make_room", null, null, null, null, null, null);
+        sqLiteDatabase = mySQLiteOpenHelper.getReadableDatabase();
+        Cursor c = sqLiteDatabase.query("byeruss_make_room", null, null, null, null, null, null);
         return c;
     }
 
@@ -46,26 +46,26 @@ public class MyDBHandler {
 
         Log.d(TAG, "insert");
 
-        mDB = mHelper.getWritableDatabase();
+        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
 
         ContentValues value = new ContentValues();
         value.put("roomName", roomName);
         value.put("roomTime", roomTime);
         value.put("roomPlace", roomPlace);
 
-        mDB.insert("byeruss_make_room", null, value);
+        sqLiteDatabase.insert("byeruss_make_room", null, value);
 
     }
 
     public void delete(String name)
     {
         Log.d(TAG, "delete");
-        mDB = mHelper.getWritableDatabase();
-        mDB.delete("byeruss_make_room", "roomName=?", new String[]{name});
+        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        sqLiteDatabase.delete("byeruss_make_room", "roomName=?", new String[]{name});
     }
 
     public void close() {
-        mHelper.close();
+        mySQLiteOpenHelper.close();
     }
 
 

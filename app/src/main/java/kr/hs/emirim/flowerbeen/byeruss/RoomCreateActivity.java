@@ -32,9 +32,9 @@ public class RoomCreateActivity extends AppCompatActivity {
     private String roomTime = "";
     private String roomPlace = "";
 
-    MyDBHandler myDBHandler = null;
-    Cursor cursor = null;
-    SimpleCursorAdapter simpleCursorAdapter = null;
+    MyDBHandler myDBHandler;
+    Cursor cursor;
+    SimpleCursorAdapter simpleCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +44,14 @@ public class RoomCreateActivity extends AppCompatActivity {
         input_room = findViewById(R.id.input_room);
         input_time = findViewById(R.id.input_time);
         input_place = findViewById(R.id.input_place);
-        btn_create_room = (Button)findViewById(R.id.btn_create_room);
-        btn_cancel_room = (Button)findViewById(R.id.btn_cancel_room);
+        btn_create_room = findViewById(R.id.btn_create_room);
+        btn_cancel_room = findViewById(R.id.btn_cancel_room);
 
         btn_create_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                roomName = input_room.getText().toString();
-//                roomTime = input_time.getText().toString();
-//                roomPlace = input_place.getText().toString();
-
                 insertRoomData();
-                Intent intent = new Intent(RoomCreateActivity.this, RoomListActivity.class);
-//                intent.putExtra("roomName", roomName);
-//                intent.putExtra("roomTime", roomTime);
-//                intent.putExtra("roomPlace", roomPlace);
+                Intent intent = new Intent(RoomCreateActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -23,4 +23,11 @@
     <string name="edit_button_description">Edit Single room information</string>
     <string name="cross_image_content_description">Delete room from SQLite database</string>
     <string name="database_summary">Total Rooms: %1$d. Total Members: %2$d</string>
+    <string name="back">메뉴로 돌아가기</string>
+    <string name="insert_room_data">확인</string>
+    <string name="byeruss_text">bye-russ</string>
+    <string name="user_hello_text">님 안녕하세요?</string>
+    <string name="meeting_make_btn">모임 만들기</string>
+    <string name="meeting_find_btn">모임 찾기</string>
+    <string name="my_meeting_btn">나의 모임</string>
 </resources>
