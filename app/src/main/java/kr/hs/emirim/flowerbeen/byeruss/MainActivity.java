@@ -3,13 +3,12 @@ package kr.hs.emirim.flowerbeen.byeruss;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateActivity;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomFindActivity;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList.RoomListActivity;
 

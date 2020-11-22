@@ -14,50 +14,29 @@
     android:background="#ffffff">
 
     <TextView
-        android:id="@+id/idTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="roomID" />
-
-    <!--
-    <ImageView
-        android:id="@+id/deleteImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:src="@android:drawable/ic_menu_delete"
-        android:alpha="0.5"
-        android:contentDescription="Delete room from SQLite database" />
-    -->!
-
-    <TextView
         android:id="@+id/roomNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/roomName"
+        android:text="모임 이름"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idTextView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/roomNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/roomNameTitle"
-        app:layout_constraintTop_toBottomOf="@id/idTextView"
         tools:text="코로나out!" />
 
     <TextView
         android:id="@+id/roomTimeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/roomTime"
+        android:text="모임 시간"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/roomNameTitle" />
@@ -75,7 +54,7 @@
         android:id="@+id/roomPlaceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/roomPlace"
+        android:text="모임 장소"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/roomTimeTitle" />

@@ -1,24 +1,14 @@
 package kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom;
 
 public class RoomItem {
-    private int RoomId;
     private String RoomName;
     private String RoomTime;
     private String RoomPlace;
 
     public RoomItem(String RoomName, String RoomTime, String RoomPlace){
-        //this.RoomId = RoomId;
         this.RoomName = RoomName;
         this.RoomTime = RoomTime;
         this.RoomPlace = RoomPlace;
-    }
-
-    public int getRoomId() {
-        return RoomId;
-    }
-
-    public void setRoomId(int roomId) {
-        RoomId = roomId;
     }
 
     public String getRoomName() {

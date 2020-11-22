@@ -1,24 +1,12 @@
-package kr.hs.emirim.flowerbeen.byeruss.Database;
+package kr.hs.emirim.flowerbeen.byeruss;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteException;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomItem;
-import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
+import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
 
 public class MyDBHandler {
 
@@ -27,13 +15,13 @@ public class MyDBHandler {
     MySQLiteOpenHelper mySQLiteOpenHelper = null;
     SQLiteDatabase sqLiteDatabase = null;
 
-    public MyDBHandler(Context context, String name) {
-        mySQLiteOpenHelper = new MySQLiteOpenHelper(context, name, null, 1);
+    public MyDBHandler(Context context) {
+        mySQLiteOpenHelper = new MySQLiteOpenHelper(context);
     }
 
-    public static MyDBHandler open(Context context, String name) {
-        return new MyDBHandler(context, name);
-    }
+//    public static MyDBHandler open(Context context, String name) {
+//        return new MyDBHandler(context, name);
+//    }
 
     public Cursor select()
     {
@@ -67,6 +55,5 @@ public class MyDBHandler {
     public void close() {
         mySQLiteOpenHelper.close();
     }
-
 
 }

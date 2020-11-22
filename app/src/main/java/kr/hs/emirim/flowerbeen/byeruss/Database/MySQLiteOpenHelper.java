@@ -4,9 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-
 import kr.hs.emirim.flowerbeen.byeruss.Util.Config;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
@@ -21,16 +18,16 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
 
     //constructor
-    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public MySQLiteOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {//사용중인 DB가 없을 때 호출
 
         String CREATE_ROOM_TABLE = "CREATE TABLE " +  Config.ROOM_TABLE_NAME + "("
-                + Config.COLUMN_ROOM_ID + " INTEGER NOT NULL PRIMARY KEY, "
-                + Config.COLUMN_ROOM_NAME +" TEXT NOT NULL, "
+                + Config.COLUMN_ROOM_NAME +" TEXT NOT NULL PRIMARY KEY, "
                 + Config.COLUMN_ROOM_TIME +" TEXT NOT NULL, "
                 + Config.COLUMN_ROOM_PLACE +" TEXT NOT NULL "
                 + ")";
@@ -38,12 +35,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         String CREATE_MEMBER_TABLE = "CREATE TABLE " +  Config.MEMBER_TABLE_NAME + "("
                 + Config.COLUMN_MEMBER_ID + " INTEGER NOT NULL PRIMARY KEY, "
                 + Config.COLUMN_MEMBER_1 + " TEXT, "
-                + "FOREIGN KEY (" + Config.COLUMN_MEMBER_ID + ") REFERENCES " + Config.ROOM_TABLE_NAME + "(" + Config.COLUMN_MEMBER_ID + ") ON UPDATE CASCADE ON DELETE CASCADE"
+                + "FOREIGN KEY (" + Config.COLUMN_MEMBER_ID + ") REFERENCES " + Config.ROOM_TABLE_NAME + "(" + Config.COLUMN_ROOM_NAME + ") ON UPDATE CASCADE ON DELETE CASCADE"
                 + ")";
         sqLiteDatabase.execSQL(CREATE_ROOM_TABLE);
         sqLiteDatabase.execSQL(CREATE_MEMBER_TABLE);
 
-        Logger.d("DB created! ");
+        //Logger.d("DB created! ");
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {//사용중인 코드의 버전이 바뀐 경우 호출
@@ -55,15 +52,14 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    @Override
-    public void onOpen(SQLiteDatabase sqLiteDatabase) {//데이터베이스가 열렸을 때 호출
-        super.onOpen(sqLiteDatabase);
-
-        //ON UPDATE CASCADE, ON DELETE CASCADE와 같은 외래키 제약 조건 사용
-        sqLiteDatabase.execSQL("PRAGMA foreign_keys=ON;");
-        //table_room = 외래 키가 참조하는 테이블 인 상위 테이블
-        //table_member = 외래 키 제약 조건이 적용되는 하위 테이블
-        //상위 및 하위 테이블에있는 행 간의 관계를 적용하려면 외래 키 제약 조건 을 사용
-        //상위테이블에서 해당 행을 삭제하거나 업데이트하지 않고 테이블 에서 행을 제거 할 수 있다
-    }
+//    @Override
+//    public void onOpen(SQLiteDatabase sqLiteDatabase) {//데이터베이스가 열렸을 때 호출
+//        super.onOpen(sqLiteDatabase);
+//        //ON UPDATE CASCADE, ON DELETE CASCADE와 같은 외래키 제약 조건 사용
+//        sqLiteDatabase.execSQL("PRAGMA foreign_keys=ON;");
+//        //table_room = 외래 키가 참조하는 테이블 인 상위 테이블
+//        //table_member = 외래 키 제약 조건이 적용되는 하위 테이블
+//        //상위 및 하위 테이블에있는 행 간의 관계를 적용하려면 외래 키 제약 조건 을 사용
+//        //상위테이블에서 해당 행을 삭제하거나 업데이트하지 않고 테이블 에서 행을 제거 할 수 있다
+//    }
 }

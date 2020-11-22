@@ -1,16 +1,14 @@
 package kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom;
 
-import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
 
+import kr.hs.emirim.flowerbeen.byeruss.MainActivity;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
 public class RoomFindActivity extends AppCompatActivity {
@@ -22,10 +20,18 @@ public class RoomFindActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_room);
+        setContentView(R.layout.activity_room_find);
 
         text_input_code = findViewById(R.id.text_input_code);
-        btn_check = (Button)findViewById(R.id.btn_check);
-        btn_cancel = (Button)findViewById(R.id.btn_cancel );
+        btn_check = findViewById(R.id.btn_check);
+        btn_cancel = findViewById(R.id.btn_cancel );
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RoomFindActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
