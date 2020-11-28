@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomCreateActivity;
-import kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom.RoomFindActivity;
-import kr.hs.emirim.flowerbeen.byeruss.Features.Room.ShowRoomList.RoomListActivity;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomCreateActivity;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomFindActivity;
+import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomListActivity;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity{
         btn_make_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userId = tv_user.getText().toString();
                 Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
+                intent.putExtra("userID", userId);
                 startActivity(intent);
             }
         });

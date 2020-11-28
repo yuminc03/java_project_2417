@@ -1,4 +1,4 @@
-package kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom;
+package kr.hs.emirim.flowerbeen.byeruss.Features.Room;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,13 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import kr.hs.emirim.flowerbeen.byeruss.MainActivity;
-import kr.hs.emirim.flowerbeen.byeruss.MyDBHandler;
 import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
@@ -25,16 +22,15 @@ public class RoomCreateActivity extends AppCompatActivity {
     private EditText input_time;
     private EditText input_place;
     private Button btn_create_room;
-    private Button btn_cancel_room;
+    //private Button btn_cancel_room;
     private Button btn_overlap;
 
     private int buttonclick = 0;
+    private String memberId;
 
-    MyDBHandler myDBHandler;
-    MySQLiteOpenHelper mySQLiteOpenHelper;
-    SQLiteDatabase sqLiteDatabase;
-    Cursor cursor;
-    SimpleCursorAdapter simpleCursorAdapter;
+    private MySQLiteOpenHelper mySQLiteOpenHelper;
+    private SQLiteDatabase sqLiteDatabase;
+    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +41,11 @@ public class RoomCreateActivity extends AppCompatActivity {
         input_time = findViewById(R.id.input_time);
         input_place = findViewById(R.id.input_place);
         btn_create_room = findViewById(R.id.btn_create_room);
-        btn_cancel_room = findViewById(R.id.btn_cancel_room);
+        //btn_cancel_room = findViewById(R.id.btn_cancel_room);
         btn_overlap = findViewById(R.id.btn_overlap);
+
+        Intent intent = getIntent();
+        memberId = intent.getStringExtra("userID");
 
         mySQLiteOpenHelper = new MySQLiteOpenHelper(this);
 
@@ -59,13 +58,13 @@ public class RoomCreateActivity extends AppCompatActivity {
                 insertRoomData();
             }
         });
-        btn_cancel_room.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomCreateActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btn_cancel_room.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(RoomCreateActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         btn_overlap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,6 +107,11 @@ public class RoomCreateActivity extends AppCompatActivity {
                     + input_room.getText().toString() + "' ,'"
                     + input_time.getText().toString() + "' ,'"
                     + input_place.getText().toString() + "');");
+
+            sqLiteDatabase.execSQL("INSERT INTO byeruss_room_member VALUES ( '"
+                    + input_room.getText().toString() + "' ,'"
+                    + memberId + "');");// DB에 입력한 값으로 행 추가
+
             sqLiteDatabase.close();
             Toast.makeText(RoomCreateActivity.this, "데이터가 입력되었습니다!", Toast.LENGTH_SHORT).show();
             input_room.setText("");

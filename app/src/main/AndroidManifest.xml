@@ -11,7 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"><!-- Android 9 버전부터 이 옵션 추가해야함. http 보안관련 때문에.. -->
+        android:usesCleartextTraffic="true">
+        <!-- Android 9 버전부터 이 옵션 추가해야함. http 보안관련 때문에.. -->
+        <activity
+            android:name=".Features.Member.MemberListActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Features.Room.RoomListActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Features.Room.RoomCreateActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Features.Room.RoomFindActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".Features.Room.CreateRoom.RoomCreateActivity"/>
-        <activity android:name=".Features.Room.CreateRoom.RoomFindActivity"/>
-        <activity android:name=".Features.Room.ShowRoomList.RoomListActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

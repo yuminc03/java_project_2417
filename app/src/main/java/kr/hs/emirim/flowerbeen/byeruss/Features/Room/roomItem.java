@@ -1,11 +1,11 @@
-package kr.hs.emirim.flowerbeen.byeruss.Features.Room.CreateRoom;
+package kr.hs.emirim.flowerbeen.byeruss.Features.Room;
 
-public class RoomItem {
+public class roomItem {
     private String RoomName;
     private String RoomTime;
     private String RoomPlace;
 
-    public RoomItem(String RoomName, String RoomTime, String RoomPlace){
+    public roomItem(String RoomName, String RoomTime, String RoomPlace){
         this.RoomName = RoomName;
         this.RoomTime = RoomTime;
         this.RoomPlace = RoomPlace;
