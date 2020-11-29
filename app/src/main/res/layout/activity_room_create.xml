@@ -128,7 +128,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="96dp"
         android:background="#2196F3"
         android:text="확인"
         android:textColor="#FFFFFF"

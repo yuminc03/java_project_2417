@@ -1,4 +1,4 @@
-package kr.hs.emirim.flowerbeen.byeruss;
+package kr.hs.emirim.flowerbeen.byeruss.Database;
 
 import android.content.ContentValues;
 import android.content.Context;

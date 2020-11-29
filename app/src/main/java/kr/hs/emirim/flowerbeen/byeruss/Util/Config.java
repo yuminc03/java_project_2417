@@ -12,7 +12,8 @@ public class Config {
 
     //방에 있는 멤버 테이블
     public static final String MEMBER_TABLE_NAME = "byeruss_room_member";
-    public static final String COLUMN_MEMBER_ID = "myRoomId";
+    public static final String COLUMN_MEMBER_ID = "memberNumber";
+    public static final String COLUMN_ROOM_ID = "myRoomId";
     public static final String COLUMN_MEMBER_1 = "memberId";
 
 

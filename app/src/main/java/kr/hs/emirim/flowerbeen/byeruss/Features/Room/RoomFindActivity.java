@@ -23,7 +23,7 @@ public class RoomFindActivity extends AppCompatActivity {
     private Button btn_check;
     //private Button btn_cancel;
 
-    private String memberId;
+    private String myRoomId, memberId;
 
     private MySQLiteOpenHelper mySQLiteOpenHelper;
     private SQLiteDatabase sqLiteDatabase;
@@ -54,12 +54,14 @@ public class RoomFindActivity extends AppCompatActivity {
 //        });
         Intent intent = getIntent();
         memberId = intent.getStringExtra("userID");
+
         mySQLiteOpenHelper = new MySQLiteOpenHelper(this);
 
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(text_input_code.getText() != null){
+                    //myRoomId = text_input_code.getText().toString();
                     findRoom();
                 }
                 else{

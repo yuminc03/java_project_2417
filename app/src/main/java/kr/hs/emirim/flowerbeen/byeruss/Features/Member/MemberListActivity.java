@@ -19,6 +19,7 @@ public class MemberListActivity extends AppCompatActivity {
 
     private ListView member_list_view;
     private String myRoomId, memberId;
+    private int memberNumber;
 
     private ArrayList arrayList = new ArrayList<>();
     private ArrayList<memberItem> memberitem = new ArrayList<>();
@@ -55,13 +56,14 @@ public class MemberListActivity extends AppCompatActivity {
         if(cursor != null){
             cursor.move(0);
             while(cursor.moveToNext()){
+                memberNumber = Integer.parseInt(cursor.getString(cursor.getColumnIndex("memberNumber")));
                 myRoomId = cursor.getString(cursor.getColumnIndex("myRoomId"));
                 memberId = cursor.getString(cursor.getColumnIndex("memberId"));
-                memberitem.add(new memberItem(myRoomId, memberId));//객체에 DB내용 담기
+                memberitem.add(new memberItem(memberNumber, myRoomId, memberId));//객체에 DB내용 담기
             }
             listView.setAdapter(listAdapter);
             for(memberItem memberitem : memberitem){
-                listAdapter.add("모임이름: " + memberitem.getMyRoomId() + "\n" + "모임원: " + memberitem.getMemberId() + "\n");
+                listAdapter.add("멤버 번호: " + memberitem.getMemberNumber() + "모임이름: " + memberitem.getMyRoomId() + "\n" + "모임원: " + memberitem.getMemberId() + "\n");
             }
             listAdapter.notifyDataSetChanged();
         }

@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity{
     private Button btn_my_room;
     private Button btn_log_out;
 
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +35,13 @@ public class MainActivity extends AppCompatActivity{
         btn_log_out = findViewById(R.id.btn_log_out);
 
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
+        userID = intent.getStringExtra("userID");
         tv_user.setText(userID);
 
         btn_make_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = tv_user.getText().toString();
+                String userId = userID;
                 Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
                 intent.putExtra("userID", userId);
                 startActivity(intent);
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = tv_user.getText().toString();
+                String userId = userID;
                 Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
                 intent.putExtra("userID", userId);
                 startActivity(intent);
