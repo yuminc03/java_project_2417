@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity{
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userId = tv_user.getText().toString();
                 Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
+                intent.putExtra("userID", userId);
                 startActivity(intent);
             }
         });

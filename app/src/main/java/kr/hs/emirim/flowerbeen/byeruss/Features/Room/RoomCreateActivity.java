@@ -90,7 +90,6 @@ public class RoomCreateActivity extends AppCompatActivity {
                 }catch(Exception e){
                     e.getStackTrace();
                 }
-
             }
         });
 
