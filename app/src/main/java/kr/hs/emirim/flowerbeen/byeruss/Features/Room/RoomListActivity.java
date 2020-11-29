@@ -79,13 +79,12 @@ public class RoomListActivity extends AppCompatActivity{
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try{
-                        arrayList.remove(position);
-                        roomitem.remove(position);
-                        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
-                        sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName + ";", null);
-                        
+//                        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
+//                        sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName + ";", null);
+//                        sqLiteDatabase.close();
+                        deleteRoom(roomName);
+                        selectRoom(listAdapter, mySQLiteOpenHelper, room_list_view);
                         Toast.makeText(getApplicationContext(), "모임이 삭제되었습니다!!", Toast.LENGTH_LONG).show();
-                        listAdapter.notifyDataSetChanged();
                     }catch(Exception e){
                         e.printStackTrace();
                     }finally{
@@ -105,12 +104,18 @@ public class RoomListActivity extends AppCompatActivity{
         }
     };
 
+    public void deleteRoom(String roomName){
+        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName);
+        sqLiteDatabase.close();
+    }
+
     public void selectRoom(ArrayAdapter listAdapter, MySQLiteOpenHelper mySQLiteOpenHelper, ListView listView){
         listAdapter.clear();
         roomitem.clear();
 
         sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
-        cursor = sqLiteDatabase.rawQuery("SELECT * FROM byeruss_make_room", null);
+        cursor = sqLiteDatabase.rawQuery("SELECT * FROM byeruss_make_room", null);//selectionArgs는 Where과 같이 인자가 필요한 필터의 메개변수 값을 전달 하는 역할을 한다.
         if(cursor != null){
             cursor.move(0);
             while(cursor.moveToNext()) {

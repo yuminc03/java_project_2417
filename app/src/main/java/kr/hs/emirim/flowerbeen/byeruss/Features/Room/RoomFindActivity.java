@@ -43,15 +43,7 @@ public class RoomFindActivity extends AppCompatActivity {
 
         text_input_code = findViewById(R.id.text_input_code);
         btn_check = findViewById(R.id.btn_check);
-        //btn_cancel = findViewById(R.id.btn_cancel);
 
-//        btn_cancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(RoomFindActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         Intent intent = getIntent();
         memberId = intent.getStringExtra("userID");
 
