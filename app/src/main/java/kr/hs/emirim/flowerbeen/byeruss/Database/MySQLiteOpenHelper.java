@@ -33,7 +33,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                 + ")";
 
         String CREATE_MEMBER_TABLE = "CREATE TABLE " +  Config.MEMBER_TABLE_NAME + "("
-                + Config.COLUMN_MEMBER_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_MEMBER_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
                 + Config.COLUMN_ROOM_ID + " TEXT NOT NULL, "
                 + Config.COLUMN_MEMBER_1 + " TEXT NOT NULL "
                 //+ "FOREIGN KEY (" + Config.COLUMN_ROOM_ID + ") REFERENCES " + Config.ROOM_TABLE_NAME + "(" + Config.COLUMN_ROOM_NAME + ") ON UPDATE CASCADE ON DELETE CASCADE"

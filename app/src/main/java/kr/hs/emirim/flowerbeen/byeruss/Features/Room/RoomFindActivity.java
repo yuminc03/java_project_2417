@@ -103,13 +103,29 @@ public class RoomFindActivity extends AppCompatActivity {
         builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
-                sqLiteDatabase.execSQL("INSERT INTO byeruss_room_member VALUES ( '"
-                        + text_input_code.getText().toString() + "' ,'"
-                        + memberId + "');");// DB에 입력한 값으로 행 추가
-
-                sqLiteDatabase.close();
-                Toast.makeText(RoomFindActivity.this, "모임에 가입하였습니다~!", Toast.LENGTH_SHORT).show();
+                int check = 0;
+                try{
+                    sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
+                    String sql = "SELECT * FROM byeruss_room_member where memberId='"
+                            + memberId + "';";
+                    cursor = sqLiteDatabase.rawQuery(sql, null);
+                    int checkName;
+                    checkName = cursor.getCount();
+                    if(checkName == 0){//중복이 아닌 경우
+                        check = 0;
+                        sqLiteDatabase.execSQL("INSERT INTO byeruss_room_member VALUES (null, '"
+                                + text_input_code.getText().toString() + "' ,'"
+                                + memberId + "');");// DB에 입력한 값으로 행 추가
+                        Toast.makeText(RoomFindActivity.this, "모임에 가입하였습니다~!", Toast.LENGTH_SHORT).show();
+                    }else {//중복일 경우
+                        check = 1;
+                        Toast.makeText(RoomFindActivity.this, "이미 가입하였습니다!", Toast.LENGTH_LONG).show();
+                    }
+                    cursor.close();
+                    sqLiteDatabase.close();
+                }catch(Exception e){
+                    e.getStackTrace();
+                }
             }
         });
         builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {

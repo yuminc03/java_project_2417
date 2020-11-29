@@ -107,7 +107,7 @@ public class RoomCreateActivity extends AppCompatActivity {
                     + input_time.getText().toString() + "' ,'"
                     + input_place.getText().toString() + "');");
 
-            sqLiteDatabase.execSQL("INSERT INTO byeruss_room_member VALUES ( '"
+            sqLiteDatabase.execSQL("INSERT INTO byeruss_room_member VALUES (null, '"
                     + input_room.getText().toString() + "' ,'"
                     + memberId + "');");// DB에 입력한 값으로 행 추가
 

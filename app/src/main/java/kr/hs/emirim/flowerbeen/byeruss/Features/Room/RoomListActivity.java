@@ -83,6 +83,7 @@ public class RoomListActivity extends AppCompatActivity{
                         roomitem.remove(position);
                         sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
                         sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName + ";", null);
+                        
                         Toast.makeText(getApplicationContext(), "모임이 삭제되었습니다!!", Toast.LENGTH_LONG).show();
                         listAdapter.notifyDataSetChanged();
                     }catch(Exception e){

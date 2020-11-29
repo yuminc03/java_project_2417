@@ -46,24 +46,24 @@ public class MemberListActivity extends AppCompatActivity {
 
     }
 
-    public void selectMember(ArrayAdapter listAdapter, MySQLiteOpenHelper mySQLiteOpenHelper, ListView listView){
+    public void selectMember(ArrayAdapter listAdapter, MySQLiteOpenHelper mySQLiteOpenHelper, ListView listView) {
         listAdapter.clear();
         memberitem.clear();
 
         sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
         cursor = sqLiteDatabase.rawQuery("SELECT * FROM byeruss_room_member WHERE myRoomId='"
                 + myRoomId + "';", null);
-        if(cursor != null){
+        if (cursor != null) {
             cursor.move(0);
-            while(cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 memberNumber = Integer.parseInt(cursor.getString(cursor.getColumnIndex("memberNumber")));
                 myRoomId = cursor.getString(cursor.getColumnIndex("myRoomId"));
                 memberId = cursor.getString(cursor.getColumnIndex("memberId"));
                 memberitem.add(new memberItem(memberNumber, myRoomId, memberId));//객체에 DB내용 담기
             }
             listView.setAdapter(listAdapter);
-            for(memberItem memberitem : memberitem){
-                listAdapter.add("멤버 번호: " + memberitem.getMemberNumber() + "모임이름: " + memberitem.getMyRoomId() + "\n" + "모임원: " + memberitem.getMemberId() + "\n");
+            for (memberItem memberitem : memberitem) {
+                listAdapter.add("멤버 번호: " + memberitem.getMemberNumber() + "\n" + "모임이름: " + memberitem.getMyRoomId() + "\n" + "모임원: " + memberitem.getMemberId() + "\n");
             }
             listAdapter.notifyDataSetChanged();
         }
