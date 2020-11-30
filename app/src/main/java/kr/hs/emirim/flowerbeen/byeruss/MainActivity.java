@@ -12,7 +12,6 @@ import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomCreateActivity;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomFindActivity;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Room.RoomListActivity;
 
-
 public class MainActivity extends AppCompatActivity{
 
     private TextView tv_user;
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity{
     private Button btn_find_room;
     private Button btn_my_room;
     private Button btn_log_out;
-
     private String userID;
 
     @Override
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        tv_user.setText(userID);
+        //tv_user.setText(userID);
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,22 +55,23 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        tv_user.setText(userID);
+        //tv_user.setText(userID);
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RoomListActivity.class);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });
-        tv_user.setText(userID);
+        //tv_user.setText(userID);
         btn_log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 
             }
         });
-        tv_user.setText(userID);
+        //tv_user.setText(userID);
     }
 
 }

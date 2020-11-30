@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
 import kr.hs.emirim.flowerbeen.byeruss.Features.Member.MemberListActivity;
+import kr.hs.emirim.flowerbeen.byeruss.MainActivity;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
 
@@ -31,7 +32,8 @@ public class RoomListActivity extends AppCompatActivity{
     private String DB_PATH =  "/data/data/kr.hs.emirim.flowerbeen.byeruss/byeruss_room.db";
 
     private ListView room_list_view;
-    private String roomName, roomTime, roomPlace;
+    private String roomName, roomTime, roomPlace, memberId;
+    private Button btn_back5;
 
     private ArrayList arrayList = new ArrayList<>();
     private ArrayList<roomItem> roomitem = new ArrayList<>();
@@ -49,6 +51,10 @@ public class RoomListActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
+        btn_back5 = findViewById(R.id.btn_back5);
+
+        Intent intent = getIntent();
+        memberId = intent.getStringExtra("userID");
 
         listAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
 
@@ -58,11 +64,22 @@ public class RoomListActivity extends AppCompatActivity{
         mySQLiteOpenHelper = new MySQLiteOpenHelper(this);
         selectRoom(listAdapter, mySQLiteOpenHelper, room_list_view);
 
+
         room_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {//모임을 클릭했을 때 intent이동
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), MemberListActivity.class);
                 intent.putExtra("roomName", roomName);
+                intent.putExtra("memberId", memberId);
+                startActivity(intent);
+            }
+        });
+
+        btn_back5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RoomListActivity.this, MainActivity.class);
+                intent.putExtra("userID", memberId);
                 startActivity(intent);
             }
         });

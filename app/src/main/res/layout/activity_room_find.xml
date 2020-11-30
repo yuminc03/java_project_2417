@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Features.Room.RoomFindActivity">
 
     <Button
-        android:id="@+id/btn_back_main2"
+        android:id="@+id/btn_back2"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -54,16 +55,17 @@
 
     <Button
         android:id="@+id/btn_check"
-        android:layout_width="122dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="372dp"
         android:background="#75EAC4"
         android:text="확인"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_code" />
+        app:layout_constraintHorizontal_bias="0.154"
+
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

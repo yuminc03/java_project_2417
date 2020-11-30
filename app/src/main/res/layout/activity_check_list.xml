@@ -32,22 +32,22 @@
             android:orientation="vertical"
             tools:ignore="ExtraText">
 
-            <ImageButton
-                android:id="@+id/btn_back2"
-                android:layout_width="56dp"
-                android:layout_height="34dp"
-                android:layout_gravity="right"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.948"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
-                tools:ignore="VectorDrawableCompat" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_back1"-->
+<!--                android:layout_width="56dp"-->
+<!--                android:layout_height="34dp"-->
+<!--                android:layout_gravity="right"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginRight="8dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.982"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"-->
+<!--                tools:ignore="VectorDrawableCompat" />-->
 
             <CheckBox
                 android:id="@+id/cb_temp"
@@ -65,9 +65,9 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/cb_mask"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_back2"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.165" />
 
             <CheckBox

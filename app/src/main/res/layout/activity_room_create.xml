@@ -139,7 +139,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_back_main"
+        android:id="@+id/btn_back3"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"

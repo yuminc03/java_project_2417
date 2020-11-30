@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import kr.hs.emirim.flowerbeen.byeruss.Features.Member.MemberListActivity;
 
 public class CheckListActivity extends AppCompatActivity {
-    private ImageButton btn_back;
+    //private ImageButton btn_back1;
     private CheckBox cb_temp;
     private CheckBox cb_mask;
     private CheckBox cb_fever;
@@ -25,7 +26,7 @@ public class CheckListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
 
-        btn_back = findViewById(R.id.btn_back);
+        //btn_back1 = findViewById(R.id.btn_back1);
         cb_temp = findViewById(R.id.cb_temp);
         cb_mask = findViewById(R.id.cb_mask);
         cb_fever = findViewById(R.id.cb_fever);
@@ -36,7 +37,7 @@ public class CheckListActivity extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String result = "";
+                String result;
                 int r = 0;
                 if(cb_temp.isChecked() == true) r++;
                 if(cb_mask.isChecked() == true) r++;
@@ -44,15 +45,16 @@ public class CheckListActivity extends AppCompatActivity {
                 if(cb_wash_hand.isChecked() == true) r++;
                 if(cb_self_isolation.isChecked() == true) r++;
                 result = Integer.toString(r);
+                Toast.makeText(getApplicationContext(), "당신의 점수는 "+result+"입니다!", Toast.LENGTH_LONG).show();
             }
         });
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CheckListActivity.this, MemberListActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btn_back1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CheckListActivity.this, MemberListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

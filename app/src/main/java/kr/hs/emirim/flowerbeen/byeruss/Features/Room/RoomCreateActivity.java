@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import kr.hs.emirim.flowerbeen.byeruss.Database.MySQLiteOpenHelper;
+import kr.hs.emirim.flowerbeen.byeruss.MainActivity;
 import kr.hs.emirim.flowerbeen.byeruss.R;
 
 public class RoomCreateActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class RoomCreateActivity extends AppCompatActivity {
     private EditText input_time;
     private EditText input_place;
     private Button btn_create_room;
-    //private Button btn_cancel_room;
+    private Button btn_back3;
     private Button btn_overlap;
 
     private int buttonclick = 0;
@@ -41,7 +42,7 @@ public class RoomCreateActivity extends AppCompatActivity {
         input_time = findViewById(R.id.input_time);
         input_place = findViewById(R.id.input_place);
         btn_create_room = findViewById(R.id.btn_create_room);
-        //btn_cancel_room = findViewById(R.id.btn_cancel_room);
+        btn_back3 = findViewById(R.id.btn_back3);
         btn_overlap = findViewById(R.id.btn_overlap);
 
         Intent intent = getIntent();
@@ -90,6 +91,14 @@ public class RoomCreateActivity extends AppCompatActivity {
                 }catch(Exception e){
                     e.getStackTrace();
                 }
+            }
+        });
+        btn_back3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RoomCreateActivity.this, MainActivity.class);
+                intent.putExtra("userID", memberId);
+                startActivity(intent);
             }
         });
 
