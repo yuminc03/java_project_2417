@@ -12,12 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".CheckListActivity"></activity>
         <!-- Android 9 버전부터 이 옵션 추가해야함. http 보안관련 때문에.. -->
         <activity
             android:name=".Features.Member.MemberListActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".checkListActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Features.Room.RoomListActivity"

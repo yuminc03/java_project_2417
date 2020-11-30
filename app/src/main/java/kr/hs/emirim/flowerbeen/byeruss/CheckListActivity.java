@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 
 import kr.hs.emirim.flowerbeen.byeruss.Features.Member.MemberListActivity;
 
-public class checkListActivity extends AppCompatActivity {
+public class CheckListActivity extends AppCompatActivity {
     private ImageButton btn_back;
     private CheckBox cb_temp;
     private CheckBox cb_mask;
@@ -50,7 +50,7 @@ public class checkListActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(checkListActivity.this, MemberListActivity.class);
+                Intent intent = new Intent(CheckListActivity.this, MemberListActivity.class);
                 startActivity(intent);
             }
         });
