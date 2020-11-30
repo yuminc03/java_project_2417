@@ -79,10 +79,8 @@ public class RoomListActivity extends AppCompatActivity{
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try{
-//                        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
-//                        sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName + ";", null);
-//                        sqLiteDatabase.close();
                         deleteRoom(roomName);
+                        deleteMember(roomName);
                         selectRoom(listAdapter, mySQLiteOpenHelper, room_list_view);
                         Toast.makeText(getApplicationContext(), "모임이 삭제되었습니다!!", Toast.LENGTH_LONG).show();
                     }catch(Exception e){
@@ -107,6 +105,11 @@ public class RoomListActivity extends AppCompatActivity{
     public void deleteRoom(String roomName){
         sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
         sqLiteDatabase.execSQL("DELETE FROM byeruss_make_room WHERE roomName = " + roomName);
+        sqLiteDatabase.close();
+    }
+    public void deleteMember(String myRoomId){
+        sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
+        sqLiteDatabase.execSQL("DELETE FROM byeruss_room_member WHERE myRoomId = " + myRoomId);
         sqLiteDatabase.close();
     }
 

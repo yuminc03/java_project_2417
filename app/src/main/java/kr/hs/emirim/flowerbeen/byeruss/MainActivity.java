@@ -41,21 +41,23 @@ public class MainActivity extends AppCompatActivity{
         btn_make_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = userID;
+                //String userId = userID;
                 Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
-                intent.putExtra("userID", userId);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });
+        tv_user.setText(userID);
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = userID;
+                //String userId = userID;
                 Intent intent = new Intent(MainActivity.this, RoomFindActivity.class);
-                intent.putExtra("userID", userId);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });
+        tv_user.setText(userID);
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,12 +65,14 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+        tv_user.setText(userID);
         btn_log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 
             }
         });
+        tv_user.setText(userID);
     }
 
 }
