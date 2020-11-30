@@ -17,6 +17,9 @@
             android:name=".Features.Member.MemberListActivity"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".checkListActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".Features.Room.RoomListActivity"
             android:parentActivityName=".MainActivity" />
         <activity
