@@ -51,10 +51,10 @@ public class RoomListActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
-        btn_back5 = findViewById(R.id.btn_back5);
+        //btn_back5 = findViewById(R.id.btn_back5);
 
-        Intent intent = getIntent();
-        memberId = intent.getStringExtra("userID");
+        //Intent intent = getIntent();
+        //memberId = intent.getStringExtra("memberId");
 
         listAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
 
@@ -75,14 +75,14 @@ public class RoomListActivity extends AppCompatActivity{
             }
         });
 
-        btn_back5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomListActivity.this, MainActivity.class);
-                intent.putExtra("userID", memberId);
-                startActivity(intent);
-            }
-        });
+//        btn_back5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(RoomListActivity.this, MainActivity.class);
+//                intent.putExtra("userID", memberId);
+//                startActivity(intent);
+//            }
+//        });
 
     }
     AdapterView.OnItemLongClickListener mLongClickListener = new AdapterView.OnItemLongClickListener() {

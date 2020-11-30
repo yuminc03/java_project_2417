@@ -34,6 +34,7 @@
 
 <!--            <ImageButton-->
 <!--                android:id="@+id/btn_back1"-->
+<!--                android:background="#BED8CFE8"-->
 <!--                android:layout_width="56dp"-->
 <!--                android:layout_height="34dp"-->
 <!--                android:layout_gravity="right"-->
@@ -164,8 +165,9 @@
                 android:layout_height="47dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="36dp"
-                android:background="#A1A1A1"
+                android:background="#A499B6"
                 android:text="제출"
+                android:rotationX="5"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"

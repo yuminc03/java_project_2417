@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        //tv_user.setText(userID);
+        tv_user.setText(userID);
         btn_find_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        //tv_user.setText(userID);
+        tv_user.setText(userID);
         btn_my_room.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,14 +64,14 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-        //tv_user.setText(userID);
+        tv_user.setText(userID);
         btn_log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 
             }
         });
-        //tv_user.setText(userID);
+        tv_user.setText(userID);
     }
 
 }

@@ -106,7 +106,7 @@ public class RoomFindActivity extends AppCompatActivity {
                 int check = 0;
                 try{
                     sqLiteDatabase = mySQLiteOpenHelper.getWritableDatabase();
-                    String sql = "SELECT * FROM byeruss_room_member where memberId='"
+                    String sql = "SELECT myRoomId FROM byeruss_room_member where memberId='"
                             + memberId + "';";
                     cursor = sqLiteDatabase.rawQuery(sql, null);
                     int checkName;

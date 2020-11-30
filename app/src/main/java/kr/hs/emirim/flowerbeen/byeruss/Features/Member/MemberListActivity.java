@@ -42,11 +42,11 @@ public class MemberListActivity extends AppCompatActivity {
 
         listAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
         member_list_view = findViewById(R.id.member_list_view);
-        btn_back4 = findViewById(R.id.btn_back4);
+        //btn_back4 = findViewById(R.id.btn_back4);
 
         Intent intent = getIntent();
         String roomName = intent.getStringExtra("roomName");
-        String memberId = intent.getStringExtra("memberId");
+        final String memberId = intent.getStringExtra("memberId");
         myRoomId = roomName;
         this.memberId = memberId;
 
@@ -57,13 +57,14 @@ public class MemberListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn_back4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MemberListActivity.this, RoomListActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btn_back4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MemberListActivity.this, RoomListActivity.class);
+//                intent.putExtra("memberId", memberId);
+//                startActivity(intent);
+//            }
+//        });
 
         mySQLiteOpenHelper = new MySQLiteOpenHelper(this);
         selectMember(listAdapter, mySQLiteOpenHelper, member_list_view);

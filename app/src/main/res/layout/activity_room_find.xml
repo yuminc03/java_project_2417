@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#E3DBEB"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Features.Room.RoomFindActivity">
@@ -29,10 +30,10 @@
         android:id="@+id/text_input"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:background="#009688"
+        android:background="#673AB7"
         android:gravity="center"
         android:text="코드(방 아이디(ID))를 입력해주세요"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -55,17 +56,17 @@
 
     <Button
         android:id="@+id/btn_check"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="122dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="372dp"
-        android:background="#75EAC4"
+        android:background="#39673AB7"
+        android:rotationX="10"
         android:text="확인"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
